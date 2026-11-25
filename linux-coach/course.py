@@ -38,6 +38,7 @@ EXTRA_EXAMPLES = {
     LS_OPTIONS: "تصور کن ls فقط app.py را نشان می‌دهد. با ls -a، فایل .env هم پیدا می‌شود. ls -l ستون‌های اندازه و مالک را اضافه می‌کند. ls -la هر دو کار را یک‌جا انجام می‌دهد.",
     "103.3-3": "عدد 1048576 بایت را تصور کن. -l ستون اندازه می‌دهد و -h نمایش آن را به 1.0M تبدیل می‌کند. ترکیبشان می‌شود ls -lh.",
     "103.4-1": "شل دو مسیر خروجی دارد. لوله فقط شمارهٔ ۱ را به tee می‌دهد. بدون 2>&1، شمارهٔ ۲ مستقیم به ترمینال می‌رود.",
+    "103.3-15": "مسیر پیوند و مقصدش را جدا در نظر بگیر. یکی ورودی فهرست است و دیگری فایلی که پس از دنبال کردن پیوند به آن می‌رسی. بزرگی و کوچکی حروف گزینه‌ها مهم است.",
 }
 
 
@@ -109,8 +110,10 @@ def advance(data, payload):
         raise ValueError("Invalid lesson action")
     answer = payload.get("answer", "")
     note = payload.get("note", "")
-    if not isinstance(answer, str) or not isinstance(note, str) or len(answer) > 220 or len(note) > 500:
+    if not isinstance(answer, str) or not isinstance(note, str):
         raise ValueError("Invalid answer or note")
+    if action == "answer" and not answer.strip():
+        action = "skip"
 
     course = data.setdefault("course", {})
     records = course.setdefault("records", {})
@@ -127,12 +130,9 @@ def advance(data, payload):
         outcome = "hint"
         message = EXTRA_EXAMPLES.get(key) or f"نمونهٔ یک جواب «{lesson['answers'][0]}» است. {lesson['explanation']}"
     elif action == "answer":
-        if not answer.strip():
-            raise ValueError("Write an answer")
         correct = any(matches_answer(answer, value) for value in lesson["answers"])
         if correct:
-            assisted = record.get("help", False) or record.get("incorrect", 0) > 0
-            record.update(status="passed", level=max(record.get("level", 0), 1 if assisted else 2))
+            record.update(status="passed", level=max(record.get("level", 0), 1))
             outcome = "correct"
             message = f"درست است. {lesson['explanation']}"
         else:
@@ -181,6 +181,12 @@ def advance(data, payload):
 
 def public_lessons():
     return [
-        {**{k: v for k, v in LESSONS[key].items() if k != "answers"}, "series": "ls" if key in LS_IDS else None}
+        {
+            **{k: v for k, v in LESSONS[key].items() if k != "answers"},
+            "series": "ls" if key in LS_IDS else None,
+            "guide": EXTRA_EXAMPLES.get(
+                key, "از مثال بالا شروع کن. ببین سؤال دنبال نام یک مفهوم، معنی بخشی از خروجی یا خود فرمان است و همان بخش را پیدا کن."
+            ),
+        }
         for key in LESSON_IDS
     ]

@@ -813,35 +813,215 @@
         "status": "passed",
         "level": 1
       },
-      "101.1-1": {},
+      "101.1-1": {
+        "status": "passed",
+        "level": 2,
+        "note": "بلد نیستم خروجی ها رو کامل بخونم و فهمم و اینکه مگه PCI  فقط برای کارت گرافیک نیست ؟ ➜  ~ lspci\n00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)\n00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)\n00:14.0 USB controller: Intel Corporation 200 Series/Z370 Chipset Family USB 3.0 xHCI Controller\n00:16.0 Communication controller: Intel Corporation 200 Series PCH CSME HECI #1\n00:17.0 SATA controller: Intel Corp"
+      },
       "101.2-1": {
-        "help": true
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "نمی دونم دقیقا چی به چیه ؟ چی کجاست ؟ چطوری بوت میشه ترتیبشون چیه ؟ و..."
       },
       "103.6-1": {},
       "200.1-1": {
         "help": true
       },
-      "103.3-9": {},
-      "101.3-1": {},
+      "103.3-9": {
+        "status": "reported",
+        "level": 1
+      },
+      "101.3-1": {
+        "help": true,
+        "note": "هیچ دیدی و درکی ازش ندارم - اصلا systemd کجاست ؟",
+        "status": "passed",
+        "level": 1
+      },
       "103.3-26": {},
       "201.1-1": {},
       "212.5-1": {
         "help": true
-      }
+      },
+      "102.1-1": {
+        "help": true,
+        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
+        "status": "passed",
+        "level": 1
+      },
+      "102.2-1": {
+        "status": "passed",
+        "level": 2,
+        "note": "خب من اینو چطوری ببینم کجا درکش کنم ؟"
+      },
+      "102.3-1": {
+        "help": true,
+        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
+        "status": "deferred"
+      },
+      "102.4-1": {
+        "status": "passed",
+        "level": 2,
+        "note": "من فقط بلدم فایل .deb رو نصب کنم باهاش"
+      },
+      "102.5-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred",
+        "note": "اصلا نمی فهمم چیه متوجه نمی شوم"
+      },
+      "102.6-1": {
+        "help": true,
+        "note": "بلد نیستم",
+        "status": "deferred"
+      },
+      "104.1-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred",
+        "note": "تو ویندوز این مفاهیمو بلدم ولی تو لینوکس پیچیده تره |! نمی فهمم"
+      },
+      "104.2-1": {
+        "help": true,
+        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
+        "status": "passed",
+        "level": 1
+      },
+      "104.3-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "Do you really want to continue<n>? no\ncheck aborted.\n➜  ~ /etc/fstab\nzsh: permission denied: /etc/fstab\n➜  ~ cd /etc/fstab\ncd: not a directory: /etc/fstab\n➜  ~ cat /etc/fstab\n# /etc/fstab: static file system information.\n#\n# Use 'blkid' to print the universally unique identifier for a\n# device; this may be used with UUID= as a more robust way to name devices\n# that works even if disks are added and removed. See fstab(5).\n#\n# <file system> <mount point>   <type>  <options>       <dump>  <pass>\n#"
+      },
+      "104.5-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1
+      },
+      "104.6-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred",
+        "note": "اصلا نشنیدم !‌inode ? symlink ?  من فقط ln -s  رو بلد بودم همونه یا فرق داره ؟"
+      },
+      "104.7-1": {
+        "help": true,
+        "status": "deferred"
+      },
+      "105.1-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred",
+        "level": 1
+      },
+      "105.2-1": {
+        "help": true,
+        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
+        "status": "passed",
+        "level": 1
+      },
+      "106.1-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "من خودم کوبونتو نصب می کنم ولی نمی دونم پشت صحنه x11 - wayland ,... چیه ؟"
+      },
+      "106.2-1": {
+        "incorrect": 1,
+        "status": "deferred",
+        "note": "Wayland پروتکل ارتباط نمایش است من فکر می کردم نرم افزاره"
+      },
+      "106.3-1": {
+        "help": true,
+        "status": "reported",
+        "level": 1
+      },
+      "107.1-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred"
+      },
+      "107.2-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "cron تب رو تقریبا بلدم ولی تاحالا باهاشون کار نکردم جدی"
+      },
+      "107.3-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1
+      },
+      "108.1-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1
+      },
+      "108.2-1": {
+        "help": true,
+        "incorrect": 1,
+        "status": "deferred"
+      },
+      "108.3-1": {
+        "status": "passed",
+        "level": 2
+      },
+      "108.4-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "نفهمیدم چیه و به چه دردی می خوره ؟"
+      },
+      "109.1-1": {
+        "help": true,
+        "status": "passed",
+        "level": 1,
+        "note": "TCP , UDP  رو تا حد خوبی متوجه ام"
+      },
+      "109.2-1": {
+        "help": true,
+        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
+        "status": "passed",
+        "level": 1
+      },
+      "103.3-5": {
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-7": {
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-8": {
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-3": {
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-6": {
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-10": {
+        "help": true,
+        "status": "reported",
+        "level": 1
+      },
+      "103.3-15": {},
+      "103.3-29": {},
+      "103.3-18": {},
+      "204.1-1": {},
+      "207.1-1": {},
+      "212.1-1": {}
     },
     "previous_feedback": {
-      "lesson": "200.1-1",
-      "title": "گلوگاه منابع",
-      "kind": "hint",
-      "text": "نمونهٔ یک جواب «iostat» است. مصرف بالا به‌تنهایی نمی‌گوید چرا سرویس کند است. iostat آمار عملکرد دستگاه‌های ذخیره‌سازی را می‌دهد و می‌توان آن را کنار شواهد CPU و حافظه دید."
+      "title": "متغیر برای برنامهٔ فرزند",
+      "text": "گفتی این بخش را بلدی و می‌خواهی جلوتر بروی. آشنایی‌ات ثبت شد؛ سنجش این مرحله برای مرور می‌ماند."
     },
-    "current": "212.5-1",
-    "last_feedback": {
-      "lesson": "212.5-1",
-      "title": "تونل VPN",
-      "kind": "hint",
-      "text": "نمونهٔ یک جواب «tun» است. OpenVPN یک رابط مجازی می‌سازد تا بسته‌ها از تونل عبور کنند. TUN معمولاً بسته‌های IP و TAP فریم‌های Ethernet را حمل می‌کند."
-    },
+    "current": "212.1-1",
+    "last_feedback": null,
     "events": [
       {
         "at": "2026-11-24T13:46:21.782121+00:00",
@@ -1050,6 +1230,638 @@
         "answer": "",
         "note": "",
         "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:09:54.363284+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T08:12:46.902243+00:00",
+        "lesson": "101.1-1",
+        "action": "answer",
+        "answer": "lsusb",
+        "note": "بلد نیستم خروجی ها رو کامل بخونم و فهمم و اینکه مگه PCI  فقط برای کارت گرافیک نیست ؟ ➜  ~ lspci\n00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)\n00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)\n00:14.0 USB controller: Intel Corporation 200 Series/Z370 Chipset Family USB 3.0 xHCI Controller\n00:16.0 Communication controller: Intel Corporation 200 Series PCH CSME HECI #1\n00:17.0 SATA controller: Intel Corp",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:13:12.916186+00:00",
+        "lesson": "101.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:13:42.863755+00:00",
+        "lesson": "101.2-1",
+        "action": "answer",
+        "answer": "بوت لودر",
+        "note": "نمی دونم دقیقا چی به چیه ؟ چی کجاست ؟ چطوری بوت میشه ترتیبشون چیه ؟ و...",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:14:17.658777+00:00",
+        "lesson": "101.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "هیچ دیدی و درکی ازش ندارم",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:14:34.600336+00:00",
+        "lesson": "101.3-1",
+        "action": "answer",
+        "answer": "graphical.target",
+        "note": "هیچ دیدی و درکی ازش ندارم - اصلا systemd کجاست ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:14:59.778373+00:00",
+        "lesson": "102.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:15:57.731481+00:00",
+        "lesson": "102.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:16:18.674504+00:00",
+        "lesson": "102.1-1",
+        "action": "skip",
+        "answer": "",
+        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T08:16:34.770340+00:00",
+        "lesson": "102.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T08:16:47.466643+00:00",
+        "lesson": "102.1-1",
+        "action": "answer",
+        "answer": "/var",
+        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:17:27.842662+00:00",
+        "lesson": "102.2-1",
+        "action": "answer",
+        "answer": "GRUB",
+        "note": "خب من اینو چطوری ببینم کجا درکش کنم ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:17:42.498671+00:00",
+        "lesson": "102.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:57:00.970301+00:00",
+        "lesson": "102.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T08:57:06.074509+00:00",
+        "lesson": "102.3-1",
+        "action": "skip",
+        "answer": "",
+        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T08:58:29.323709+00:00",
+        "lesson": "102.4-1",
+        "action": "answer",
+        "answer": "dpkg -l",
+        "note": "من فقط بلدم فایل .deb رو نصب کنم باهاش",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T08:59:11.354285+00:00",
+        "lesson": "102.5-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:00:02.062628+00:00",
+        "lesson": "102.5-1",
+        "action": "answer",
+        "answer": "rpm -i sh.bash",
+        "note": "اصلا نمی فهمم چیه متوجه نمی شوم",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T09:00:45.345849+00:00",
+        "lesson": "102.6-1",
+        "action": "hint",
+        "answer": "",
+        "note": "بلد نیستم",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:01:29.592850+00:00",
+        "lesson": "102.6-1",
+        "action": "skip",
+        "answer": "",
+        "note": "بلد نیستم",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T09:02:03.638658+00:00",
+        "lesson": "104.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:03:14.170645+00:00",
+        "lesson": "104.1-1",
+        "action": "answer",
+        "answer": "فایل سیستمه",
+        "note": "تو ویندوز این مفاهیمو بلدم ولی تو لینوکس پیچیده تره |! نمی فهمم",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T09:04:47.444733+00:00",
+        "lesson": "104.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:05:03.263432+00:00",
+        "lesson": "104.2-1",
+        "action": "answer",
+        "answer": "fsck",
+        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T09:05:19.179167+00:00",
+        "lesson": "104.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:07:10.480184+00:00",
+        "lesson": "104.3-1",
+        "action": "answer",
+        "answer": "/etc/fstab",
+        "note": "Do you really want to continue<n>? no\ncheck aborted.\n➜  ~ /etc/fstab\nzsh: permission denied: /etc/fstab\n➜  ~ cd /etc/fstab\ncd: not a directory: /etc/fstab\n➜  ~ cat /etc/fstab\n# /etc/fstab: static file system information.\n#\n# Use 'blkid' to print the universally unique identifier for a\n# device; this may be used with UUID= as a more robust way to name devices\n# that works even if disks are added and removed. See fstab(5).\n#\n# <file system> <mount point>   <type>  <options>       <dump>  <pass>\n#",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T09:07:43.914595+00:00",
+        "lesson": "104.5-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:07:46.499107+00:00",
+        "lesson": "104.5-1",
+        "action": "answer",
+        "answer": "خواندن",
+        "note": "",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T09:08:05.446251+00:00",
+        "lesson": "104.6-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:09:24.869971+00:00",
+        "lesson": "104.6-1",
+        "action": "answer",
+        "answer": "inode",
+        "note": "اصلا نشنیدم !‌inode ? symlink ?  من فقط ln -s  رو بلد بودم همونه یا فرق داره ؟",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T09:17:28.440080+00:00",
+        "lesson": "104.7-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:17:46.321920+00:00",
+        "lesson": "104.7-1",
+        "action": "skip",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T09:17:58.034736+00:00",
+        "lesson": "105.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:18:03.227419+00:00",
+        "lesson": "105.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:18:24.661741+00:00",
+        "lesson": "105.1-1",
+        "action": "answer",
+        "answer": "ٍEXPORT",
+        "note": "",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T09:19:15.251295+00:00",
+        "lesson": "105.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:19:25.204510+00:00",
+        "lesson": "105.2-1",
+        "action": "answer",
+        "answer": "۰",
+        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T09:19:38.389763+00:00",
+        "lesson": "106.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T09:20:48.238465+00:00",
+        "lesson": "106.1-1",
+        "action": "answer",
+        "answer": "Display",
+        "note": "من خودم کوبونتو نصب می کنم ولی نمی دونم پشت صحنه x11 - wayland ,... چیه ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T09:21:35.058458+00:00",
+        "lesson": "106.2-1",
+        "action": "answer",
+        "answer": "KDE رو من دوست دارم",
+        "note": "Wayland پروتکل ارتباط نمایش است من فکر می کردم نرم افزاره",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T12:34:20.965071+00:00",
+        "lesson": "106.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:34:30.629312+00:00",
+        "lesson": "106.3-1",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:34:46.158971+00:00",
+        "lesson": "107.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:34:47.305032+00:00",
+        "lesson": "107.1-1",
+        "action": "answer",
+        "answer": "id user",
+        "note": "",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T12:35:07.759320+00:00",
+        "lesson": "107.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:35:47.674935+00:00",
+        "lesson": "107.2-1",
+        "action": "answer",
+        "answer": "cron",
+        "note": "cron تب رو تقریبا بلدم ولی تاحالا باهاشون کار نکردم جدی",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:35:54.976706+00:00",
+        "lesson": "107.3-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:36:01.423836+00:00",
+        "lesson": "107.3-1",
+        "action": "answer",
+        "answer": "utf-8",
+        "note": "",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:36:10.510550+00:00",
+        "lesson": "108.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:36:15.702643+00:00",
+        "lesson": "108.1-1",
+        "action": "answer",
+        "answer": "ntp",
+        "note": "",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:36:30.563943+00:00",
+        "lesson": "108.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:36:31.307859+00:00",
+        "lesson": "108.2-1",
+        "action": "answer",
+        "answer": "-n 5",
+        "note": "",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-25T12:36:46.593788+00:00",
+        "lesson": "108.3-1",
+        "action": "answer",
+        "answer": "SMTP",
+        "note": "",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:36:56.904228+00:00",
+        "lesson": "108.4-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:37:51.994698+00:00",
+        "lesson": "108.4-1",
+        "action": "answer",
+        "answer": "lpstat",
+        "note": "نفهمیدم چیه و به چه دردی می خوره ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:38:05.463752+00:00",
+        "lesson": "109.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:38:29.317231+00:00",
+        "lesson": "109.1-1",
+        "action": "answer",
+        "answer": "TCP",
+        "note": "TCP , UDP  رو تا حد خوبی متوجه ام",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:41:47.144561+00:00",
+        "lesson": "109.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:41:55.631649+00:00",
+        "lesson": "109.2-1",
+        "action": "answer",
+        "answer": "ip addr",
+        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-25T12:42:21.949272+00:00",
+        "lesson": "103.3-5",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:42:32.492448+00:00",
+        "lesson": "103.3-5",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:42:39.995249+00:00",
+        "lesson": "103.3-7",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:42:47.178865+00:00",
+        "lesson": "103.3-8",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:42:48.946564+00:00",
+        "lesson": "103.3-9",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:42:55.290069+00:00",
+        "lesson": "103.3-3",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:44:22.225746+00:00",
+        "lesson": "103.3-6",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:44:28.813213+00:00",
+        "lesson": "103.3-10",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-25T12:51:06.182100+00:00",
+        "lesson": "103.3-2",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:51:13.964326+00:00",
+        "lesson": "103.3-10",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:51:15.908498+00:00",
+        "lesson": "103.3-10",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T12:51:29.715879+00:00",
+        "lesson": "103.3-15",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T13:05:52.825818+00:00",
+        "lesson": "103.3-29",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T13:06:04.794900+00:00",
+        "lesson": "103.3-18",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T13:11:40.296390+00:00",
+        "lesson": "105.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T13:11:45.492135+00:00",
+        "lesson": "105.1-1",
+        "action": "known",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T13:12:20.144845+00:00",
+        "lesson": "204.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T14:18:52.699175+00:00",
+        "lesson": "207.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T14:19:20.993890+00:00",
+        "lesson": "212.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-25T14:19:29.415371+00:00",
+        "lesson": "212.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
       }
     ]
   }

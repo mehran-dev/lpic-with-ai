@@ -101,7 +101,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         try:
             length = int(self.headers.get("Content-Length", "0"))
-            if length < 1 or length > 4096:
+            if length < 1 or (self.path != "/api/course" and length > 4096):
                 raise ValueError("Invalid request size")
             payload = json.loads(self.rfile.read(length))
             if not isinstance(payload, dict):

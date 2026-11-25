@@ -98,22 +98,21 @@ summary { cursor:pointer; font-weight:700; padding:.3rem }
 <div>
 <small id="lesson-id"></small><h2 id="lesson-title" tabindex="-1">در حال باز کردن درس…</h2>
 <div class="scene" id="explanation" hidden></div>
-<div class="actions"><button type="button" id="continue" class="primary" data-action="skip" hidden>ادامه بدون جواب</button></div>
+<section class="scene" id="guide" hidden><h3>راهنما</h3><p id="guide-text"></p></section>
 <form id="practice" hidden>
 <label id="question" for="answer"></label>
-<input id="answer" maxlength="220" required autocomplete="off" aria-describedby="question-format">
-<small id="question-format">یک واژه، عبارت کوتاه یا خود فرمان را بنویس.</small>
-<div class="actions"><button type="submit">ثبت جواب و ادامه</button><button type="button" data-action="hint">یک مثال دیگر</button></div>
+<input id="answer" autocomplete="off" aria-describedby="question-format">
+<small id="question-format">جواب اختیاری است. می‌توانی این کادر را خالی بگذاری.</small>
+<div class="actions"><button type="submit" class="primary">ادامه</button></div>
 </form>
 <p id="feedback" role="status"></p>
 </div>
 <aside id="controls" hidden>
 <h3>تو به درس جهت بده</h3>
 <label for="note">این بخش را چقدر بلدی؟</label>
-<textarea id="note" maxlength="500" placeholder="مثلاً ls را بلدم ولی گزینه‌هایش را بلد نیستم…"></textarea>
+<textarea id="note" placeholder="مثلاً ls را بلدم ولی گزینه‌هایش را بلد نیستم…"></textarea>
 <div class="actions">
 <button data-action="known">اصلش را بلدم، بریم جلو</button>
-<button data-action="hint">اینجا کمک می‌خوام</button>
 </div>
 <small>یادداشتت همراه درس ذخیره می‌شود. درس ردشده را بعداً از نقشه باز کن.</small>
 </aside>
@@ -255,11 +254,12 @@ function render(moveFocus) {
   byId('explanation').hidden = !current;
   byId('practice').hidden = !current;
   byId('controls').hidden = !current;
-  byId('continue').hidden = !current;
+  byId('guide').hidden = !current;
   byId('feedback').textContent = feedback?.text || (!current ? 'درس‌های مرور را از نقشه باز کن. مرحلهٔ بعد، حل مسئلهٔ تازه بدون راهنماست.' : '');
   byId('feedback').dataset.kind = feedback?.kind || '';
   if (current) {
     byId('explanation').textContent = current.explanation;
+    byId('guide-text').textContent = current.guide;
     byId('question').textContent = current.question;
     if (moveFocus) {
       byId('note').value = state.records[current.id]?.note || '';
@@ -292,7 +292,7 @@ async function send(action, lesson = state?.current) {
 }
 byId('practice').onsubmit = event => {
   event.preventDefault();
-  if (byId('answer').value.trim()) send('answer');
+  send('answer');
 };
 document.querySelectorAll('[data-action]').forEach(button => {
   button.onclick = () => send(button.dataset.action);
