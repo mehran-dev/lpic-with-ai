@@ -1,0 +1,1056 @@
+{
+  "answers": {
+    "setup": "کمی روی سیستم خودم یا WSL",
+    "pwd": "مسیر پوشه‌ای که الان داخلش هستم",
+    "path": "report.txt",
+    "ls": "ls",
+    "identity": "whoami",
+    "diagnosis": "system ctl reload / status - reboot",
+    "confidence": "کارهای معمول را انجام می‌دهم"
+  },
+  "history": [
+    {
+      "at": "2026-11-24T10:42:01.951125+00:00",
+      "question": "setup",
+      "answer": "کمی روی سیستم خودم یا WSL"
+    },
+    {
+      "at": "2026-11-24T10:42:10.717679+00:00",
+      "question": "pwd",
+      "answer": "مسیر پوشه‌ای که الان داخلش هستم"
+    },
+    {
+      "at": "2026-11-24T10:42:24.024446+00:00",
+      "question": "path",
+      "answer": "report.txt"
+    },
+    {
+      "at": "2026-11-24T10:42:28.512898+00:00",
+      "question": "ls",
+      "answer": "ls"
+    },
+    {
+      "at": "2026-11-24T10:42:33.624359+00:00",
+      "question": "identity",
+      "answer": "whoami"
+    },
+    {
+      "at": "2026-11-24T10:43:07.700313+00:00",
+      "question": "diagnosis",
+      "answer": "system ctl reload / status - reboot"
+    },
+    {
+      "at": "2026-11-24T10:43:21.203577+00:00",
+      "question": "confidence",
+      "answer": "کارهای معمول را انجام می‌دهم"
+    },
+    {
+      "type": "challenge",
+      "at": "2026-11-24T11:07:20.392086+00:00",
+      "question": "service",
+      "choice": 1,
+      "reason": "خب مشخصه که باید لاگ بررسی شه ولی من چه می دونم لاگ چیه ؟ اصلا از کجا بدونم ریبوت کنم دوباره بدون مشکل بالا میاد ؟ اصلا سوالت بیشتر مدیریت بحرانه تا آموزش لینوکس",
+      "decision_correct": true
+    },
+    {
+      "type": "challenge",
+      "at": "2026-11-24T11:08:47.295822+00:00",
+      "question": "permission",
+      "choice": 2,
+      "reason": "سودو میزنم تو فایل شخصی خودم  - ولی تو سرور سریع سودو بزنی یا 777 بزنی مشکل امنیتی داره",
+      "decision_correct": true
+    },
+    {
+      "type": "challenge",
+      "at": "2026-11-24T11:09:30.540767+00:00",
+      "question": "disk",
+      "choice": 1,
+      "reason": "باید ببینیم چی داره گند میزنه شاید یکی پرمیشن رایت گرفته  و داره اتک DoS میزنه !",
+      "decision_correct": true
+    },
+    {
+      "type": "challenge",
+      "at": "2026-11-24T11:10:21.659215+00:00",
+      "question": "network",
+      "choice": 1,
+      "reason": "تخصص کافی تو dns  و شبکه و.. ندارم !",
+      "decision_correct": false
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:22:52.735427+00:00",
+      "step": "status",
+      "answer": "systemctl nginx status",
+      "correct": false
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:23:11.971247+00:00",
+      "step": "status",
+      "answer": "systemctl  status  nginx",
+      "correct": true
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:24:47.236223+00:00",
+      "step": "log",
+      "answer": "systemctl journal -u nginx -n 20",
+      "correct": false
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:24:55.855513+00:00",
+      "step": "log",
+      "answer": "systemctl  -u nginx -n 20",
+      "correct": false
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:25:08.194720+00:00",
+      "step": "log",
+      "answer": "journalctl  -u nginx -n 20",
+      "correct": true
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:25:25.285071+00:00",
+      "step": "interpret_log",
+      "answer": "port_busy",
+      "correct": true
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:25:49.453749+00:00",
+      "step": "dns",
+      "answer": "getent api.example.com",
+      "correct": false
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:26:01.356716+00:00",
+      "step": "dns",
+      "answer": "getent hosts api.example.com",
+      "correct": true
+    },
+    {
+      "type": "lab",
+      "at": "2026-11-24T11:26:13.536464+00:00",
+      "step": "interpret_dns",
+      "answer": "dns_failure",
+      "correct": true
+    },
+    {
+      "type": "reflection",
+      "at": "2026-11-24T11:34:41.966333+00:00",
+      "step": "read_mode",
+      "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
+    },
+    {
+      "type": "reflection",
+      "at": "2026-11-24T11:36:06.020852+00:00",
+      "step": "explain_denial",
+      "answer": "Permission denied و -rw-r----- 1 deploy web"
+    },
+    {
+      "type": "reflection",
+      "at": "2026-11-24T11:36:57.125810+00:00",
+      "step": "safe_fix",
+      "answer": "اضافه کردن web  به گروه www-data ?"
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:43:49.229682+00:00",
+      "step": "owner",
+      "choice": 1,
+      "reason": "من نمی دونم چرا جلو فایل نوشته deploy , web  آیا اینا صاحبانش ؟ اگه ۳ تا درسترسی داشتن چی میشد ؟",
+      "decision_correct": true
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:44:48.161152+00:00",
+      "step": "identity",
+      "choice": 0,
+      "reason": "نمی فهمم gid , uid , groups جی ان و چه فرقی با هم دارن  ؟",
+      "decision_correct": true
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:45:46.992978+00:00",
+      "step": "sudo_u",
+      "choice": 2,
+      "reason": "sudo -u این یعنی چی ؟ چی کار می کنه؟ آها فهمیدم بایه یوزر دیگه ران می کنه !‌",
+      "decision_correct": true
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:46:51.814074+00:00",
+      "step": "membership",
+      "choice": 2,
+      "reason": "درک درستی ندارم !‌",
+      "decision_correct": false
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:47:00.464337+00:00",
+      "step": "membership",
+      "choice": 2,
+      "reason": "درک درستی ندارم !‌",
+      "decision_correct": false
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:47:13.695965+00:00",
+      "step": "membership",
+      "choice": 0,
+      "reason": "درک درستی ندارم !‌",
+      "decision_correct": false
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:47:16.427108+00:00",
+      "step": "membership",
+      "choice": 1,
+      "reason": "درک درستی ندارم !‌",
+      "decision_correct": true
+    },
+    {
+      "type": "identity",
+      "at": "2026-11-24T11:48:03.834485+00:00",
+      "step": "transfer",
+      "choice": 2,
+      "reason": "فقط دسترسی رید داره چون عضو گروهیه که دسترسی خواندن داره !‌",
+      "decision_correct": true
+    },
+    {
+      "type": "port",
+      "at": "2026-11-24T12:13:43.106192+00:00",
+      "step": "listen",
+      "choice": 1,
+      "reason": "نمی دونم بلد نیستم !‌",
+      "decision_correct": true
+    },
+    {
+      "type": "port",
+      "at": "2026-11-24T12:14:57.002524+00:00",
+      "step": "process",
+      "choice": 2,
+      "reason": "پایتون داره رو پورت 80 ران میشه",
+      "decision_correct": true
+    },
+    {
+      "type": "port",
+      "at": "2026-11-24T12:15:38.991555+00:00",
+      "step": "inspect",
+      "choice": 0,
+      "reason": "بلد نیستم جزیاات رو ببینم ؟",
+      "decision_correct": true
+    },
+    {
+      "type": "port",
+      "at": "2026-11-24T12:16:40.038350+00:00",
+      "step": "transfer",
+      "choice": 2,
+      "reason": "خب مشخصه پورت ۳۰۰۰ رو گرفته",
+      "decision_correct": true
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:22:27.770413+00:00",
+      "step": "map_502",
+      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:22:43.496696+00:00",
+      "step": "map_502",
+      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:22:44.448520+00:00",
+      "step": "map_502",
+      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:23:14.371849+00:00",
+      "step": "test_upstream",
+      "answer": "هیچی نمی دونم !‌    کمک کن"
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:24:11.383035+00:00",
+      "step": "read_app_log",
+      "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
+    },
+    {
+      "type": "incident",
+      "at": "2026-11-24T12:25:10.486786+00:00",
+      "step": "recovery_plan",
+      "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
+    },
+    {
+      "type": "live",
+      "at": "2026-11-24T12:55:48.406248+00:00",
+      "step": "two_outputs",
+      "answer": "دو تا خط پرینت میشه"
+    },
+    {
+      "type": "live",
+      "at": "2026-11-24T12:56:28.807244+00:00",
+      "step": "pipe",
+      "answer": "چاپ می کنه  hello"
+    },
+    {
+      "type": "live",
+      "at": "2026-11-24T12:57:00.285334+00:00",
+      "step": "pipe",
+      "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
+    },
+    {
+      "type": "live",
+      "at": "2026-11-24T12:57:55.218000+00:00",
+      "step": "merge",
+      "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
+    },
+    {
+      "type": "guided",
+      "at": "2026-11-24T13:04:42.748639+00:00",
+      "step": "redirect",
+      "answer": "خط دوم خروجی اش ریخته میشه تو ترمینال و میگه فایل وجود نداره",
+      "correct": false
+    },
+    {
+      "type": "guided",
+      "at": "2026-11-24T13:16:56.758666+00:00",
+      "step": "redirect",
+      "answer": "تو ترمینال چاپ می شود ...",
+      "correct": false
+    },
+    {
+      "type": "guided",
+      "at": "2026-11-24T13:16:58.564233+00:00",
+      "step": "redirect",
+      "answer": "تو ترمینال چاپ می شود ...",
+      "correct": false
+    },
+    {
+      "type": "guided",
+      "at": "2026-11-24T13:16:59.109299+00:00",
+      "step": "redirect",
+      "answer": "تو ترمینال چاپ می شود ...",
+      "correct": false
+    }
+  ],
+  "assessment": {
+    "technical_correct": 4,
+    "technical_total": 4,
+    "answered": 7,
+    "total": 7,
+    "needs_review": []
+  },
+  "challenges": {
+    "service": {
+      "at": "2026-11-24T11:07:20.392086+00:00",
+      "question": "service",
+      "choice": 1,
+      "reason": "خب مشخصه که باید لاگ بررسی شه ولی من چه می دونم لاگ چیه ؟ اصلا از کجا بدونم ریبوت کنم دوباره بدون مشکل بالا میاد ؟ اصلا سوالت بیشتر مدیریت بحرانه تا آموزش لینوکس",
+      "decision_correct": true
+    },
+    "permission": {
+      "at": "2026-11-24T11:08:47.295822+00:00",
+      "question": "permission",
+      "choice": 2,
+      "reason": "سودو میزنم تو فایل شخصی خودم  - ولی تو سرور سریع سودو بزنی یا 777 بزنی مشکل امنیتی داره",
+      "decision_correct": true
+    },
+    "disk": {
+      "at": "2026-11-24T11:09:30.540767+00:00",
+      "question": "disk",
+      "choice": 1,
+      "reason": "باید ببینیم چی داره گند میزنه شاید یکی پرمیشن رایت گرفته  و داره اتک DoS میزنه !",
+      "decision_correct": true
+    },
+    "network": {
+      "at": "2026-11-24T11:10:21.659215+00:00",
+      "question": "network",
+      "choice": 1,
+      "reason": "تخصص کافی تو dns  و شبکه و.. ندارم !",
+      "decision_correct": false
+    }
+  },
+  "challenge_assessment": {
+    "answered": 4,
+    "total": 4,
+    "decisions_correct": 3,
+    "needs_review": [
+      "network"
+    ],
+    "reasoning_status": "Needs human review; choice score does not grade written reasoning"
+  },
+  "lab": {
+    "attempts": [
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:22:52.735427+00:00",
+        "step": "status",
+        "answer": "systemctl nginx status",
+        "correct": false
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:23:11.971247+00:00",
+        "step": "status",
+        "answer": "systemctl  status  nginx",
+        "correct": true
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:24:47.236223+00:00",
+        "step": "log",
+        "answer": "systemctl journal -u nginx -n 20",
+        "correct": false
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:24:55.855513+00:00",
+        "step": "log",
+        "answer": "systemctl  -u nginx -n 20",
+        "correct": false
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:25:08.194720+00:00",
+        "step": "log",
+        "answer": "journalctl  -u nginx -n 20",
+        "correct": true
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:25:25.285071+00:00",
+        "step": "interpret_log",
+        "answer": "port_busy",
+        "correct": true
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:25:49.453749+00:00",
+        "step": "dns",
+        "answer": "getent api.example.com",
+        "correct": false
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:26:01.356716+00:00",
+        "step": "dns",
+        "answer": "getent hosts api.example.com",
+        "correct": true
+      },
+      {
+        "type": "lab",
+        "at": "2026-11-24T11:26:13.536464+00:00",
+        "step": "interpret_dns",
+        "answer": "dns_failure",
+        "correct": true
+      }
+    ],
+    "assessment": {
+      "completed": 5,
+      "total": 5,
+      "wrong_attempts": 4
+    },
+    "completed": {
+      "status": "2026-11-24T11:23:11.971247+00:00",
+      "log": "2026-11-24T11:25:08.194720+00:00",
+      "interpret_log": "2026-11-24T11:25:25.285071+00:00",
+      "dns": "2026-11-24T11:26:01.356716+00:00",
+      "interpret_dns": "2026-11-24T11:26:13.536464+00:00"
+    }
+  },
+  "reflections": {
+    "attempts": [
+      {
+        "type": "reflection",
+        "at": "2026-11-24T11:34:41.966333+00:00",
+        "step": "read_mode",
+        "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
+      },
+      {
+        "type": "reflection",
+        "at": "2026-11-24T11:36:06.020852+00:00",
+        "step": "explain_denial",
+        "answer": "Permission denied و -rw-r----- 1 deploy web"
+      },
+      {
+        "type": "reflection",
+        "at": "2026-11-24T11:36:57.125810+00:00",
+        "step": "safe_fix",
+        "answer": "اضافه کردن web  به گروه www-data ?"
+      }
+    ],
+    "latest": {
+      "read_mode": {
+        "type": "reflection",
+        "at": "2026-11-24T11:34:41.966333+00:00",
+        "step": "read_mode",
+        "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
+      },
+      "explain_denial": {
+        "type": "reflection",
+        "at": "2026-11-24T11:36:06.020852+00:00",
+        "step": "explain_denial",
+        "answer": "Permission denied و -rw-r----- 1 deploy web"
+      },
+      "safe_fix": {
+        "type": "reflection",
+        "at": "2026-11-24T11:36:57.125810+00:00",
+        "step": "safe_fix",
+        "answer": "اضافه کردن web  به گروه www-data ?"
+      }
+    },
+    "assessment": {
+      "answered": 3,
+      "total": 3,
+      "reasoning_status": "Awaiting tutor review; no automatic correctness claim"
+    }
+  },
+  "identity": {
+    "attempts": [
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:43:49.229682+00:00",
+        "step": "owner",
+        "choice": 1,
+        "reason": "من نمی دونم چرا جلو فایل نوشته deploy , web  آیا اینا صاحبانش ؟ اگه ۳ تا درسترسی داشتن چی میشد ؟",
+        "decision_correct": true
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:44:48.161152+00:00",
+        "step": "identity",
+        "choice": 0,
+        "reason": "نمی فهمم gid , uid , groups جی ان و چه فرقی با هم دارن  ؟",
+        "decision_correct": true
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:45:46.992978+00:00",
+        "step": "sudo_u",
+        "choice": 2,
+        "reason": "sudo -u این یعنی چی ؟ چی کار می کنه؟ آها فهمیدم بایه یوزر دیگه ران می کنه !‌",
+        "decision_correct": true
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:46:51.814074+00:00",
+        "step": "membership",
+        "choice": 2,
+        "reason": "درک درستی ندارم !‌",
+        "decision_correct": false
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:47:00.464337+00:00",
+        "step": "membership",
+        "choice": 2,
+        "reason": "درک درستی ندارم !‌",
+        "decision_correct": false
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:47:13.695965+00:00",
+        "step": "membership",
+        "choice": 0,
+        "reason": "درک درستی ندارم !‌",
+        "decision_correct": false
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:47:16.427108+00:00",
+        "step": "membership",
+        "choice": 1,
+        "reason": "درک درستی ندارم !‌",
+        "decision_correct": true
+      },
+      {
+        "type": "identity",
+        "at": "2026-11-24T11:48:03.834485+00:00",
+        "step": "transfer",
+        "choice": 2,
+        "reason": "فقط دسترسی رید داره چون عضو گروهیه که دسترسی خواندن داره !‌",
+        "decision_correct": true
+      }
+    ],
+    "completed": {
+      "owner": "2026-11-24T11:43:49.229682+00:00",
+      "identity": "2026-11-24T11:44:48.161152+00:00",
+      "sudo_u": "2026-11-24T11:45:46.992978+00:00",
+      "membership": "2026-11-24T11:47:16.427108+00:00",
+      "transfer": "2026-11-24T11:48:03.834485+00:00"
+    },
+    "assessment": {
+      "completed": 5,
+      "total": 5,
+      "wrong_attempts": 3,
+      "reasoning_status": "Awaiting tutor review"
+    }
+  },
+  "port": {
+    "attempts": [
+      {
+        "type": "port",
+        "at": "2026-11-24T12:13:43.106192+00:00",
+        "step": "listen",
+        "choice": 1,
+        "reason": "نمی دونم بلد نیستم !‌",
+        "decision_correct": true
+      },
+      {
+        "type": "port",
+        "at": "2026-11-24T12:14:57.002524+00:00",
+        "step": "process",
+        "choice": 2,
+        "reason": "پایتون داره رو پورت 80 ران میشه",
+        "decision_correct": true
+      },
+      {
+        "type": "port",
+        "at": "2026-11-24T12:15:38.991555+00:00",
+        "step": "inspect",
+        "choice": 0,
+        "reason": "بلد نیستم جزیاات رو ببینم ؟",
+        "decision_correct": true
+      },
+      {
+        "type": "port",
+        "at": "2026-11-24T12:16:40.038350+00:00",
+        "step": "transfer",
+        "choice": 2,
+        "reason": "خب مشخصه پورت ۳۰۰۰ رو گرفته",
+        "decision_correct": true
+      }
+    ],
+    "completed": {
+      "listen": "2026-11-24T12:13:43.106192+00:00",
+      "process": "2026-11-24T12:14:57.002524+00:00",
+      "inspect": "2026-11-24T12:15:38.991555+00:00",
+      "transfer": "2026-11-24T12:16:40.038350+00:00"
+    },
+    "assessment": {
+      "completed": 4,
+      "total": 4,
+      "wrong_attempts": 0,
+      "reasoning_status": "Awaiting tutor review"
+    }
+  },
+  "incident": {
+    "attempts": [
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:22:27.770413+00:00",
+        "step": "map_502",
+        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      },
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:22:43.496696+00:00",
+        "step": "map_502",
+        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      },
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:22:44.448520+00:00",
+        "step": "map_502",
+        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      },
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:23:14.371849+00:00",
+        "step": "test_upstream",
+        "answer": "هیچی نمی دونم !‌    کمک کن"
+      },
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:24:11.383035+00:00",
+        "step": "read_app_log",
+        "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
+      },
+      {
+        "type": "incident",
+        "at": "2026-11-24T12:25:10.486786+00:00",
+        "step": "recovery_plan",
+        "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
+      }
+    ],
+    "latest": {
+      "map_502": {
+        "type": "incident",
+        "at": "2026-11-24T12:22:44.448520+00:00",
+        "step": "map_502",
+        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      },
+      "test_upstream": {
+        "type": "incident",
+        "at": "2026-11-24T12:23:14.371849+00:00",
+        "step": "test_upstream",
+        "answer": "هیچی نمی دونم !‌    کمک کن"
+      },
+      "read_app_log": {
+        "type": "incident",
+        "at": "2026-11-24T12:24:11.383035+00:00",
+        "step": "read_app_log",
+        "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
+      },
+      "recovery_plan": {
+        "type": "incident",
+        "at": "2026-11-24T12:25:10.486786+00:00",
+        "step": "recovery_plan",
+        "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
+      }
+    },
+    "assessment": {
+      "answered": 4,
+      "total": 4,
+      "reasoning_status": "Awaiting tutor review; free text is not automatically graded"
+    }
+  },
+  "live": {
+    "attempts": [
+      {
+        "type": "live",
+        "at": "2026-11-24T12:55:48.406248+00:00",
+        "step": "two_outputs",
+        "answer": "دو تا خط پرینت میشه"
+      },
+      {
+        "type": "live",
+        "at": "2026-11-24T12:56:28.807244+00:00",
+        "step": "pipe",
+        "answer": "چاپ می کنه  hello"
+      },
+      {
+        "type": "live",
+        "at": "2026-11-24T12:57:00.285334+00:00",
+        "step": "pipe",
+        "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
+      },
+      {
+        "type": "live",
+        "at": "2026-11-24T12:57:55.218000+00:00",
+        "step": "merge",
+        "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
+      }
+    ],
+    "latest": {
+      "two_outputs": {
+        "type": "live",
+        "at": "2026-11-24T12:55:48.406248+00:00",
+        "step": "two_outputs",
+        "answer": "دو تا خط پرینت میشه"
+      },
+      "pipe": {
+        "type": "live",
+        "at": "2026-11-24T12:57:00.285334+00:00",
+        "step": "pipe",
+        "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
+      },
+      "merge": {
+        "type": "live",
+        "at": "2026-11-24T12:57:55.218000+00:00",
+        "step": "merge",
+        "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
+      }
+    },
+    "assessment": {
+      "answered": 3,
+      "total": 3,
+      "reasoning_status": "Awaiting tutor review; free text is not automatically graded"
+    }
+  },
+  "guided": {
+    "attempts": [
+      {
+        "type": "guided",
+        "at": "2026-11-24T13:04:42.748639+00:00",
+        "step": "redirect",
+        "answer": "خط دوم خروجی اش ریخته میشه تو ترمینال و میگه فایل وجود نداره",
+        "correct": false
+      },
+      {
+        "type": "guided",
+        "at": "2026-11-24T13:16:56.758666+00:00",
+        "step": "redirect",
+        "answer": "تو ترمینال چاپ می شود ...",
+        "correct": false
+      },
+      {
+        "type": "guided",
+        "at": "2026-11-24T13:16:58.564233+00:00",
+        "step": "redirect",
+        "answer": "تو ترمینال چاپ می شود ...",
+        "correct": false
+      },
+      {
+        "type": "guided",
+        "at": "2026-11-24T13:16:59.109299+00:00",
+        "step": "redirect",
+        "answer": "تو ترمینال چاپ می شود ...",
+        "correct": false
+      }
+    ],
+    "completed": {}
+  },
+  "course": {
+    "records": {
+      "103.3-1": {
+        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
+        "status": "passed",
+        "level": 2
+      },
+      "103.3-2": {
+        "incorrect": 2,
+        "help": true,
+        "status": "passed",
+        "level": 1
+      },
+      "101.1-1": {},
+      "101.2-1": {
+        "help": true
+      },
+      "103.6-1": {},
+      "200.1-1": {
+        "help": true
+      },
+      "103.3-9": {},
+      "101.3-1": {},
+      "103.3-26": {},
+      "201.1-1": {},
+      "212.5-1": {
+        "help": true
+      }
+    },
+    "previous_feedback": {
+      "lesson": "200.1-1",
+      "title": "گلوگاه منابع",
+      "kind": "hint",
+      "text": "نمونهٔ یک جواب «iostat» است. مصرف بالا به‌تنهایی نمی‌گوید چرا سرویس کند است. iostat آمار عملکرد دستگاه‌های ذخیره‌سازی را می‌دهد و می‌توان آن را کنار شواهد CPU و حافظه دید."
+    },
+    "current": "212.5-1",
+    "last_feedback": {
+      "lesson": "212.5-1",
+      "title": "تونل VPN",
+      "kind": "hint",
+      "text": "نمونهٔ یک جواب «tun» است. OpenVPN یک رابط مجازی می‌سازد تا بسته‌ها از تونل عبور کنند. TUN معمولاً بسته‌های IP و TAP فریم‌های Ethernet را حمل می‌کند."
+    },
+    "events": [
+      {
+        "at": "2026-11-24T13:46:21.782121+00:00",
+        "lesson": "103.3-1",
+        "action": "known",
+        "answer": "",
+        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:46:31.720954+00:00",
+        "lesson": "103.3-2",
+        "action": "answer",
+        "answer": "ls",
+        "note": "",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-24T13:46:37.438708+00:00",
+        "lesson": "103.3-2",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-24T13:46:59.745739+00:00",
+        "lesson": "103.3-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:47:08.144135+00:00",
+        "lesson": "103.3-1",
+        "action": "answer",
+        "answer": "ls",
+        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-24T13:47:09.493094+00:00",
+        "lesson": "103.3-1",
+        "action": "next",
+        "answer": "",
+        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:47:27.869806+00:00",
+        "lesson": "103.3-2",
+        "action": "answer",
+        "answer": "ls -a",
+        "note": "",
+        "outcome": "retry"
+      },
+      {
+        "at": "2026-11-24T13:47:43.060580+00:00",
+        "lesson": "103.3-2",
+        "action": "answer",
+        "answer": "ls -la",
+        "note": "",
+        "outcome": "correct"
+      },
+      {
+        "at": "2026-11-24T13:47:50.338810+00:00",
+        "lesson": "103.3-2",
+        "action": "next",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:58:49.353690+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:59:38.981761+00:00",
+        "lesson": "101.2-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T13:59:43.406897+00:00",
+        "lesson": "101.2-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-24T14:00:22.334501+00:00",
+        "lesson": "103.6-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:15:57.297639+00:00",
+        "lesson": "200.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:16:16.377860+00:00",
+        "lesson": "200.1-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      },
+      {
+        "at": "2026-11-24T14:42:09.538459+00:00",
+        "lesson": "103.3-9",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:42:20.751381+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:43:47.651427+00:00",
+        "lesson": "103.3-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:01.572990+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:06.381527+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:12.540927+00:00",
+        "lesson": "101.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:19.669484+00:00",
+        "lesson": "101.3-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:41.910885+00:00",
+        "lesson": "103.3-26",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:44:59.962901+00:00",
+        "lesson": "201.1-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:55:53.047731+00:00",
+        "lesson": "212.5-1",
+        "action": "open",
+        "answer": "",
+        "note": "",
+        "outcome": null
+      },
+      {
+        "at": "2026-11-24T14:56:11.039511+00:00",
+        "lesson": "212.5-1",
+        "action": "hint",
+        "answer": "",
+        "note": "",
+        "outcome": "hint"
+      }
+    ]
+  }
+}

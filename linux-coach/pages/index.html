@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مربی لینوکس · از ls تا LPIC</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg:#edf0ed; --card:#f7f8f5; --surface:#edf2ed; --field:#fbfcfa;
+  --line:#cad4cf; --field-line:#85968e; --text:#24312c; --muted:#495c53;
+  --accent:#306650; --primary:#d6e7da; --good:#2f6850; --good-bg:#e9f2ea;
+  --review:#785220; --review-bg:#f4ede1; --focus:#355e84;
+  font: 17px/1.9 Vazirmatn, "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:#171d1b; --card:#222a27; --surface:#293630; --field:#1d2622;
+  --line:#42534b; --field-line:#71867b; --text:#e2ebe6; --muted:#becbc3;
+  --accent:#b1d7c0; --primary:#364d40; --good:#b2d9c2; --good-bg:#2b3b32;
+  --review:#e2c298; --review-bg:#3a3328; --focus:#b1cdea;
+}
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--text) }
+main { max-width:1060px; margin:auto; padding:24px clamp(16px,4vw,42px) 64px }
+header, nav, .actions { display:flex; align-items:center; gap:.7rem; flex-wrap:wrap }
+header { justify-content:space-between; padding:0 0 14px; border-bottom:1px solid var(--line) }
+nav { column-gap:1rem }
+nav a { text-underline-offset:.25em }
+header strong { font-size:1.13rem }
+h1,h2,h3 { line-height:1.55; margin:0 0 .45rem; font-weight:750 }
+h1 { font-size:clamp(1.85rem,5vw,2.8rem); margin-top:1.35rem }
+h2 { font-size:clamp(1.18rem,3vw,1.45rem) }
+h3 { font-size:1.06rem }
+p { margin:0 0 .7rem }
+p:last-child { margin-bottom:0 }
+small { display:block; color:var(--muted); font-size:.88rem }
+a { color:var(--accent) }
+button,input,textarea { font:inherit }
+button {
+  padding:.4rem .85rem; border:1px solid var(--field-line); border-radius:9px;
+  color:var(--text); background:var(--card); cursor:pointer;
+}
+button.primary { background:var(--primary); border-color:var(--field-line); font-weight:750 }
+button:hover { background:var(--surface) }
+button:disabled { opacity:.65; cursor:wait }
+:focus-visible { outline:2px solid var(--focus); outline-offset:4px }
+input,textarea {
+  display:block; width:100%; margin:.3rem 0 .65rem; padding:.55rem .7rem;
+  background:var(--field); color:var(--text); border:1px solid var(--field-line); border-radius:9px;
+}
+input::placeholder,textarea::placeholder { color:var(--muted); opacity:1 }
+textarea { resize:vertical; min-height:90px }
+label { font-weight:650 }
+bdi { font-family:ui-monospace,monospace; color:var(--accent) }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:clamp(16px,3vw,25px); margin-top:16px }
+.stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px }
+.stats .card h2 { font-size:1rem; margin-bottom:.1rem }
+.stats .card p { margin-bottom:.25rem }
+.metric { color:var(--accent); font-size:1.2rem; font-weight:750 }
+progress { display:block; width:100%; height:9px; margin:.55rem 0; accent-color:var(--accent) }
+.lesson { display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); gap:clamp(18px,3vw,32px) }
+.scene { border-inline-start:3px solid var(--accent); padding:.75rem .9rem; background:var(--surface); border-radius:7px; margin:.65rem 0 .9rem }
+#practice { margin-top:1rem; padding-top:.85rem; border-top:1px solid var(--line) }
+#practice .actions { margin-top:.55rem }
+#controls { padding-inline-start:1.25rem; border-inline-start:1px solid var(--line) }
+#controls small { margin-top:.65rem }
+#feedback:not(:empty) { margin:12px 0 0; padding:.65rem .8rem; background:var(--surface); border-radius:8px }
+#last { border-inline-start:3px solid var(--field-line) }
+#last[data-kind="correct"] { border-inline-start-color:var(--good); background:var(--good-bg) }
+#last[data-kind="retry"] { border-inline-start-color:var(--review); background:var(--review-bg) }
+details { border-top:1px solid var(--line); padding:.35rem 0 }
+summary { cursor:pointer; font-weight:700; padding:.3rem }
+.group { margin-inline-start:.85rem }
+.station { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:.35rem; border-bottom:1px solid var(--line) }
+.station[data-status="passed"] .mark { color:var(--good) }
+.station[data-status="deferred"] .mark { color:var(--review) }
+.station[aria-current="step"] { background:var(--surface); border-radius:8px }
+.station button { text-align:right }
+.mark { flex-shrink:0 }
+#status,#map-items { margin-top:12px }
+[hidden] { display:none!important }
+@media(max-width:680px) {
+  .lesson,.stats { grid-template-columns:minmax(0,1fr) }
+  .stats { gap:0 }
+  #controls { border-inline-start:0; border-top:1px solid var(--line); padding:1rem 0 0 }
+  .station { align-items:flex-start; flex-direction:column }
+}
+</style>
+</head>
+<body><main>
+<header><strong>لینوکس‌لب</strong><nav aria-label="رفتن به بخش"><a href="#lesson-card">درس</a><a href="#map">نقشه و کارنامه</a><a href="#last">بازخورد قبلی</a></nav><button type="button" id="theme-switch" aria-label="تغییر روشنایی صفحه">تغییر روشنایی</button></header>
+<h1>از <bdi>ls</bdi> تا LPIC</h1>
+<p>هر مرحله یک مفهوم و یک مثال دارد. سؤال‌ها اختیاری‌اند.</p>
+<div class="stats" id="stats"></div>
+<section class="card" id="last"><h2>بازخورد درس قبل</h2><p id="previous">در حال خواندن پاسخ‌های قبلی…</p></section>
+<section class="card lesson" id="lesson-card" aria-labelledby="lesson-title">
+<div>
+<small id="lesson-id"></small><h2 id="lesson-title" tabindex="-1">در حال باز کردن درس…</h2>
+<div class="scene" id="explanation" hidden></div>
+<div class="actions"><button type="button" id="continue" class="primary" data-action="skip" hidden>ادامه بدون جواب</button></div>
+<form id="practice" hidden>
+<label id="question" for="answer"></label>
+<input id="answer" maxlength="220" required autocomplete="off" aria-describedby="question-format">
+<small id="question-format">یک واژه، عبارت کوتاه یا خود فرمان را بنویس.</small>
+<div class="actions"><button type="submit">ثبت جواب و ادامه</button><button type="button" data-action="hint">یک مثال دیگر</button></div>
+</form>
+<p id="feedback" role="status"></p>
+</div>
+<aside id="controls" hidden>
+<h3>تو به درس جهت بده</h3>
+<label for="note">این بخش را چقدر بلدی؟</label>
+<textarea id="note" maxlength="500" placeholder="مثلاً ls را بلدم ولی گزینه‌هایش را بلد نیستم…"></textarea>
+<div class="actions">
+<button data-action="known">اصلش را بلدم، بریم جلو</button>
+<button data-action="hint">اینجا کمک می‌خوام</button>
+</div>
+<small>یادداشتت همراه درس ذخیره می‌شود. درس ردشده را بعداً از نقشه باز کن.</small>
+</aside>
+</section>
+<section class="card" id="map">
+<h2>نقشه و کارنامهٔ مهارت‌ها</h2>
+<p>برای هر هدف، تمرین و سطح ثبت‌شده را می‌بینی. سنجش کوتاه فقط بخشی از هر هدف رسمی را پوشش می‌دهد. نتیجهٔ آزمون جامع هنوز ثبت نشده است.</p>
+<small>سطح ۰ · سنجش نشده | سطح ۱ · آشنا یا با کمک | سطح ۲ · پاسخ مستقل در این تمرین</small>
+<div id="map-items"></div>
+<p><a href="https://www.lpi.org/our-certifications/exam-101-102-objectives/">اهداف رسمی LPIC-1</a> · <a href="https://www.lpi.org/our-certifications/exam-201-202-objectives/">اهداف رسمی LPIC-2</a></p>
+</section>
+<p id="status" role="status"></p>
+</main>
+<script>
+const byId = id => document.getElementById(id);
+const number = new Intl.NumberFormat('fa');
+const themeButton = byId('theme-switch');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+let userTheme;
+try {
+  userTheme = localStorage.getItem('linux-coach-theme');
+} catch {
+  // A private or restricted browser may block local storage.
+}
+function applyTheme() {
+  const theme = ['light', 'dark'].includes(userTheme) ? userTheme : systemTheme.matches ? 'dark' : 'light';
+  document.documentElement.dataset.theme = theme;
+  themeButton.textContent = theme === 'dark' ? 'زمینهٔ روشن' : 'زمینهٔ تیره';
+}
+themeButton.onclick = () => {
+  userTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  try {
+    localStorage.setItem('linux-coach-theme', userTheme);
+  } catch {
+    // The setting still applies until this page closes.
+  }
+  applyTheme();
+};
+systemTheme.addEventListener('change', applyTheme);
+applyTheme();
+const topics = {
+  101:'معماری و بوت',102:'نصب و بسته‌ها',103:'شل و ابزارهای یونیکس',
+  104:'دستگاه، فایل‌سیستم و مجوز',105:'محیط شل و اسکریپت',106:'دسکتاپ و دسترسی‌پذیری',
+  107:'مدیریت کاربران و زمان‌بندی',108:'خدمات ضروری',109:'شبکهٔ پایه',110:'امنیت پایه',
+  200:'برنامه‌ریزی ظرفیت',201:'کرنل لینوکس',202:'راه‌اندازی پیشرفته',203:'فایل‌سیستم و دستگاه‌ها',
+  204:'ذخیره‌سازی پیشرفته',205:'تنظیم و عیب‌یابی شبکه',206:'نگهداری سیستم',207:'DNS',
+  208:'وب و پراکسی',209:'اشتراک فایل',210:'مدیریت کلاینت',211:'ایمیل',212:'امنیت سیستم'
+};
+const exams = [
+  ['101',101,104],['102',105,110],['201',200,206],['202',207,212]
+];
+let lessons = [], state, busy = false;
+const statusLabel = {passed:'حل شد',deferred:'برای مرور',reported:'آشنایی اعلام شده'};
+
+function create(tag, text) {
+  const element = document.createElement(tag);
+  if (text) element.textContent = text;
+  return element;
+}
+function topic(lesson) {
+  return Number(lesson.objective.split('.')[0]);
+}
+function passed(lesson) {
+  return state.records[lesson.id]?.status === 'passed';
+}
+function summaries() {
+  const cards = [1, 2].map(level => {
+    const items = lessons.filter(lesson => Math.floor(topic(lesson) / 100) === level);
+    const done = items.filter(passed).length;
+    const groups = [...new Set(items.map(item => item.objective))];
+    const checked = groups.filter(code => items.filter(item => item.objective === code).every(passed)).length;
+    const deferred = items.filter(item => ['reported','deferred'].includes(state.records[item.id]?.status)).length;
+    const card = create('section');
+    card.className = 'card';
+    const count = create('p', `${number.format(done)} از ${number.format(items.length)} تمرین حل شده`);
+    count.className = 'metric';
+    const meter = create('progress');
+    meter.max = items.length;
+    meter.value = done;
+    meter.setAttribute('aria-label', `تمرین‌های LPIC-${level}`);
+    card.append(create('h2', `LPIC-${level}`), count, meter,
+      create('p', `${number.format(items.length - done)} تمرین باقی است · ${number.format(deferred)} برای مرور`),
+      create('small', `تمرین‌های ${number.format(checked)} از ${number.format(groups.length)} هدف تکمیل شده`));
+    return card;
+  });
+  byId('stats').replaceChildren(...cards);
+}
+function renderMap() {
+  const root = byId('map-items');
+  const open = new Set([...root.querySelectorAll('details[open]')].map(node => node.dataset.key));
+  const current = lessons.find(lesson => lesson.id === state.current);
+  const activeTopic = current ? topic(current) : null;
+  const groups = exams.map(([exam, first, last]) => {
+    const wrapper = create('details');
+    wrapper.dataset.key = exam + '-exam';
+    wrapper.open = open.has(wrapper.dataset.key) || (activeTopic >= first && activeTopic <= last);
+    const items = lessons.filter(lesson => topic(lesson) >= first && topic(lesson) <= last);
+    wrapper.append(create('summary', `آزمون ${exam} · ${number.format(items.filter(passed).length)} از ${number.format(items.length)} تمرین`));
+    for (let id = first; id <= last; id++) {
+      const section = create('details');
+      section.dataset.key = String(id);
+      section.className = 'group';
+      section.open = open.has(section.dataset.key) || activeTopic === id;
+      section.append(create('summary', topics[id]));
+      for (const lesson of items.filter(item => topic(item) === id)) {
+        const record = state.records[lesson.id] || {};
+        const row = create('div');
+        row.className = 'station';
+        row.dataset.status = record.status || '';
+        if (lesson.id === state.current) row.setAttribute('aria-current','step');
+        const name = create('button', `${lesson.objective} · ${lesson.title}`);
+        name.type = 'button';
+        name.onclick = () => send('open', lesson.id);
+        const mark = create('small', `سطح ${number.format(record.level || 0)} · ${statusLabel[record.status] || 'باقی مانده'}`);
+        mark.className = 'mark';
+        row.append(name, mark);
+        section.append(row);
+      }
+      wrapper.append(section);
+    }
+    return wrapper;
+  });
+  root.replaceChildren(...groups);
+}
+function render(moveFocus) {
+  summaries();
+  renderMap();
+  const current = lessons.find(lesson => lesson.id === state.current);
+  const feedback = state.last_feedback;
+  byId('previous').textContent = state.previous_feedback
+    ? `${state.previous_feedback.title} · ${state.previous_feedback.text}`
+    : 'در درس شل نوشتی «تو ترمینال چاپ می‌شود». درست گفتی. > فقط خروجی عادی را به فایل می‌فرستد و پیام تشخیصی روی ترمینال می‌ماند. صفحهٔ قبلی جمله‌ات را اشتباه رد کرده بود. در تمرین مجوز هم دلیل خواندن فایل را با عضویت سارا در گروه درست توضیح دادی.';
+  byId('last').dataset.kind = state.previous_feedback?.kind || '';
+  byId('lesson-title').textContent = current?.title || 'نوبت مرور و تمرین مستقل';
+  const series = lessons.filter(item => item.series === 'ls');
+  byId('lesson-id').textContent = current?.series === 'ls'
+    ? `ls · قدم ${number.format(series.indexOf(current) + 1)} از ${number.format(series.length)} · هدف ${current.objective}`
+    : current ? `هدف رسمی ${current.objective}` : '';
+  byId('explanation').hidden = !current;
+  byId('practice').hidden = !current;
+  byId('controls').hidden = !current;
+  byId('continue').hidden = !current;
+  byId('feedback').textContent = feedback?.text || (!current ? 'درس‌های مرور را از نقشه باز کن. مرحلهٔ بعد، حل مسئلهٔ تازه بدون راهنماست.' : '');
+  byId('feedback').dataset.kind = feedback?.kind || '';
+  if (current) {
+    byId('explanation').textContent = current.explanation;
+    byId('question').textContent = current.question;
+    if (moveFocus) {
+      byId('note').value = state.records[current.id]?.note || '';
+      byId('answer').value = '';
+      byId('lesson-title').focus({preventScroll:true});
+      byId('last').scrollIntoView({block:'nearest'});
+    }
+  }
+}
+async function send(action, lesson = state?.current) {
+  if (busy || !lesson) return;
+  busy = true;
+  byId('status').textContent = '';
+  const answer = action === 'answer' ? byId('answer').value.trim() : '';
+  const note = action === 'open' ? '' : byId('note').value.trim();
+  try {
+    const response = await fetch('/api/course', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action,lesson,answer,note})
+    });
+    if (!response.ok) throw new Error();
+    state = await response.json();
+    const moved = ['known','skip','open','answer'].includes(action);
+    render(moved);
+  } catch {
+    byId('status').textContent = 'ذخیره انجام نشد. پاسخت را نگه داشتم. اگر درس را در تب دیگری عوض کردی، این صفحه را تازه کن.';
+  } finally {
+    busy = false;
+  }
+}
+byId('practice').onsubmit = event => {
+  event.preventDefault();
+  if (byId('answer').value.trim()) send('answer');
+};
+document.querySelectorAll('[data-action]').forEach(button => {
+  button.onclick = () => send(button.dataset.action);
+});
+fetch('/api/course', {cache:'no-store'}).then(response => {
+  if (!response.ok) throw new Error();
+  return response.json();
+}).then(data => {
+  lessons = data.lessons;
+  state = data.state;
+  render(true);
+}).catch(() => {
+  byId('lesson-title').textContent = 'ارتباط با مربی برقرار نشد';
+  byId('status').textContent = 'صفحه را دوباره باز کن تا درس ذخیره‌شده را بخوانیم.';
+});
+</script>
+</body></html>
