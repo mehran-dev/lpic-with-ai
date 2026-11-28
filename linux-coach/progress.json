@@ -1,1868 +1,965 @@
 {
-  "answers": {
-    "setup": "کمی روی سیستم خودم یا WSL",
-    "pwd": "مسیر پوشه‌ای که الان داخلش هستم",
-    "path": "report.txt",
-    "ls": "ls",
-    "identity": "whoami",
-    "diagnosis": "system ctl reload / status - reboot",
-    "confidence": "کارهای معمول را انجام می‌دهم"
+  "version": 2,
+  "responses": {
+    "shell-1": {
+      "at": "2026-11-28T08:43:18.816529+00:00",
+      "id": "shell-1",
+      "rating": "guided",
+      "answer": "خب این برای دیدن مسیره و اینکه فایل .env  هاید هست و با a نشون داده میشه حجم و اینا هم چاپ میشه دیگه چیز پیچیده ای نیست !",
+      "review": "pending"
+    },
+    "shell-2": {
+      "at": "2026-11-28T08:45:08.970337+00:00",
+      "id": "shell-2",
+      "rating": "guided",
+      "answer": "داره تو لاگ های اپ دنبال 5 خط آخری می گرده که ERROR توشون هست !‌ درواقع من نمی دونم var/log چی هست !‌ مگه متغیر ها نباید تو var باشن ؟ چرا لاگ توشه ؟‌اگر بزرگ شد چی ؟ نمی دونم !!!‌باید از less or more استفاده کنیم ؟",
+      "review": "pending"
+    },
+    "shell-3": {
+      "at": "2026-11-28T08:47:16.052931+00:00",
+      "id": "shell-3",
+      "rating": "unknown",
+      "answer": "می دونم دوتا جریان تو ترمینال هست اولی موفق و دومی ارور ها هست که دیفالت هر دو تا ترمیناله مگراینکه مشخص کنیم !‌این 1&2> فکر کنم میگه جفتشو بریز تو یه فایل یا dev/null  ولی دقیق اینا رو بلد نیستم ... `deploy >out.log 2>err.log` اینم نمی فهمم الان ۲ یعنی خطا رو بریز توی ارورر.لاگ ؟",
+      "review": "pending"
+    },
+    "shell-4": {
+      "at": "2026-11-28T09:39:44.567808+00:00",
+      "id": "shell-4",
+      "rating": "unknown",
+      "answer": "منظورت کرون جاب و کرون تبه ؟ بلد نیستم !‌",
+      "review": "pending"
+    },
+    "files-1": {
+      "at": "2026-11-28T09:40:37.143308+00:00",
+      "id": "files-1",
+      "rating": "guided",
+      "answer": "خود شخص دسترسی کامل داره --- گروهش فقط خواندن و اجرا کردن",
+      "review": "pending"
+    },
+    "files-2": {
+      "at": "2026-11-28T09:41:27.216339+00:00",
+      "id": "files-2",
+      "rating": "heard",
+      "answer": "میگه آیدی یوزر برای گروهها و .. چیه ؟ اون دستور آخرم با هویت سارا کامند رو انجام میده",
+      "review": "pending"
+    },
+    "files-3": {
+      "at": "2026-11-28T09:42:06.703608+00:00",
+      "id": "files-3",
+      "rating": "unknown",
+      "answer": "من فقط بلدم اول sudo بزنم ... ولی  ACL و SELinux/AppArmor این ها را نمی دانم !",
+      "review": "pending"
+    },
+    "files-4": {
+      "at": "2026-11-28T09:43:00.558410+00:00",
+      "id": "files-4",
+      "rating": "heard",
+      "answer": "پر خطر ترین 777 هست و تغییر گروه و ACL  نمی دونم چیه کلا !",
+      "review": "pending"
+    },
+    "boot-1": {
+      "at": "2026-11-28T09:43:18.147834+00:00",
+      "id": "boot-1",
+      "rating": "unknown",
+      "answer": "هیچی از اینا نمی دونم !‌",
+      "review": "pending"
+    },
+    "boot-2": {
+      "at": "2026-11-28T09:43:54.461421+00:00",
+      "id": "boot-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم --- فقط می دونم .env رو ست نکرده ...",
+      "review": "pending"
+    },
+    "boot-3": {
+      "at": "2026-11-28T09:44:43.124657+00:00",
+      "id": "boot-3",
+      "rating": "unknown",
+      "answer": "فقط می تونم تسک رو بکشم ! نمی دونم چطوری بفهمم چیا بهش وابسته ان و با از بین بردنش چیز هایی نابود میشه ؟ نمی دونم!‌",
+      "review": "pending"
+    },
+    "boot-4": {
+      "at": "2026-11-28T09:44:55.870562+00:00",
+      "id": "boot-4",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
+    },
+    "packages-1": {
+      "at": "2026-11-28T09:45:42.116398+00:00",
+      "id": "packages-1",
+      "rating": "guided",
+      "answer": "خب از .deb  نصب کنی دیگه آپدیت نمیشه و باید دستی آپدیت کنی از طریق اسنپ خب خودش sudo apt update -y --- upgrade -y",
+      "review": "pending"
+    },
+    "packages-2": {
+      "at": "2026-11-28T09:46:48.379923+00:00",
+      "id": "packages-2",
+      "rating": "unknown",
+      "answer": "می دونم برای بهبود پکیج ها لینوکس میاد قسمت های مشترک رو یه لایبرری میکنه تا آپدیت و امنیت اوکی باشه --- برای رفع ایراد و شناسایی ابراد هیچی بلد نیستم",
+      "review": "pending"
+    },
+    "packages-3": {
+      "at": "2026-11-28T09:47:19.754039+00:00",
+      "id": "packages-3",
+      "rating": "unknown",
+      "answer": "این دقیقا همون جاییه که هیچی ازش بلد نیستم و باید یاد بگیرم !‌",
+      "review": "pending"
+    },
+    "packages-4": {
+      "at": "2026-11-28T09:48:13.460768+00:00",
+      "id": "packages-4",
+      "rating": "unknown",
+      "answer": "می دونم انسیبل برای این کار استفاده میشه اینکه چی کار می کنه و چطور کار می کنه رو نمی دونم هیچی ! حتی دستی هم بلد نیستم چی کار کنم !‌",
+      "review": "pending"
+    },
+    "storage-1": {
+      "at": "2026-11-28T09:49:46.285754+00:00",
+      "id": "storage-1",
+      "rating": "unknown",
+      "answer": "`df -h این فضای خالی دسک به صورت انسان خواندنی !‌\nlsblk فکر کنم پارتیشن ها یا دیسک ها رو نمایش میده \nfindmnt اینو هیچ درکی ندارنمم ازش !‌\nدیسک و پارتیشن فرقشونو بلدم ولی filesystem و mountpoint رو نمی دونم چیه و فرقش چیه !‌",
+      "review": "pending"
+    },
+    "storage-2": {
+      "at": "2026-11-28T09:50:50.657567+00:00",
+      "id": "storage-2",
+      "rating": "unknown",
+      "answer": "`df -h` می‌گوید `/var` صددرصد پر است، ولی `du -sh /var/*` جمعاً کمتر نشان می‌دهد. سه احتمال عملی و فرمان تشخیص هرکدام را بگو. اینو بهم توضیح بده اصلا هیچ درکی ازش ندارم !‌",
+      "review": "pending"
+    },
+    "storage-3": {
+      "at": "2026-11-28T09:52:20.303984+00:00",
+      "id": "storage-3",
+      "rating": "unknown",
+      "answer": "نه تنها نمی دونم چیه - خودم تو کامپیوتر یه دیسک دارم هربار روشن می کنم مونتنمیشه اتوماتیک ! و برام معضل شده نه می دونم چرا اتوماتیک نمیشه مونت --- و حتی نمی دونم چرا این مدلیه و آیا  میشه اتوماتیک مونتش کرد !‌",
+      "review": "pending"
+    },
+    "storage-4": {
+      "at": "2026-11-28T09:54:31.565722+00:00",
+      "id": "storage-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم هیچی !",
+      "review": "pending"
+    },
+    "network-1": {
+      "at": "2026-11-28T09:54:54.347670+00:00",
+      "id": "network-1",
+      "rating": "unknown",
+      "answer": "بهم یاد بده ۱؟",
+      "review": "pending"
+    },
+    "network-2": {
+      "at": "2026-11-28T09:55:14.794671+00:00",
+      "id": "network-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "network-3": {
+      "at": "2026-11-28T09:55:30.098719+00:00",
+      "id": "network-3",
+      "rating": "unknown",
+      "answer": "هیجی بلد نیستم",
+      "review": "pending"
+    },
+    "network-4": {
+      "at": "2026-11-28T09:56:22.718609+00:00",
+      "id": "network-4",
+      "rating": "unknown",
+      "answer": "می دونم ssl تاریخ داره و منقضی میشه و سلف ساین هم می تونه باشه !‌ بیشتر بلد نیستم باید بهم یاد بدی",
+      "review": "pending"
+    },
+    "web-1": {
+      "at": "2026-11-28T09:56:36.831881+00:00",
+      "id": "web-1",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
+    },
+    "web-2": {
+      "at": "2026-11-28T09:56:54.930244+00:00",
+      "id": "web-2",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
+    },
+    "web-3": {
+      "at": "2026-11-28T09:57:20.115787+00:00",
+      "id": "web-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "web-4": {
+      "at": "2026-11-28T09:57:34.829498+00:00",
+      "id": "web-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "security-1": {
+      "at": "2026-11-28T09:57:50.421844+00:00",
+      "id": "security-1",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "security-2": {
+      "at": "2026-11-28T09:58:19.439727+00:00",
+      "id": "security-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم چطور least privilage اجرا میشه تو لینوکس",
+      "review": "pending"
+    },
+    "security-3": {
+      "at": "2026-11-28T09:58:41.320922+00:00",
+      "id": "security-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "security-4": {
+      "at": "2026-11-28T09:59:24.179049+00:00",
+      "id": "security-4",
+      "rating": "unknown",
+      "answer": "آیپی ها رو باید شناسایی کنم بزارم تو بلک لیست - پسورد ها رو آپدیت کنم و.. ؟؟؟ درسته ؟ فایروالم چک کنم",
+      "review": "pending"
+    },
+    "automation-1": {
+      "at": "2026-11-28T09:59:54.396008+00:00",
+      "id": "automation-1",
+      "rating": "unknown",
+      "answer": "اگه جواب واضحی داره من بلد نیستم !‌",
+      "review": "pending"
+    },
+    "automation-2": {
+      "at": "2026-11-28T10:00:54.205723+00:00",
+      "id": "automation-2",
+      "rating": "unknown",
+      "answer": "با exit code میشه کد خطا رو دید ... بقیه موارد بالا هیچ کدومو بلد نیستم !‌",
+      "review": "pending"
+    },
+    "automation-3": {
+      "at": "2026-11-28T10:01:44.535319+00:00",
+      "id": "automation-3",
+      "rating": "unknown",
+      "answer": "فقط می دونم از کرون تب و کرون جاب میشه استفاده کرد و از systemctl  هم میشه استفاده کرد بقیه موارد رو بلد نیستم",
+      "review": "pending"
+    },
+    "automation-4": {
+      "at": "2026-11-28T10:02:39.391337+00:00",
+      "id": "automation-4",
+      "rating": "heard",
+      "answer": "خب انسیبل آیدمپونتن هس و هربار با اجرا اگر چیزی غلط باشد درست می کنه و اگر درست باشه دست نمیزنه و خراب نمی کنه ... shell loop نمی دونم چیه !",
+      "review": "pending"
+    },
+    "git-1": {
+      "at": "2026-11-28T10:03:37.351401+00:00",
+      "id": "git-1",
+      "rating": "work",
+      "answer": "اگه سوالت گیته خوب من از git status , با ویژوالایز کزدن نگاه می کنم .... ولی دستی بخوای ببینی باید از git diff استفاده کنی !",
+      "review": "pending"
+    },
+    "git-2": {
+      "at": "2026-11-28T10:23:41.587381+00:00",
+      "id": "git-2",
+      "rating": "independent",
+      "answer": "لاک داکر ؟ لاگ سی آی سی دی ماشین ؟ لاگ جاب ها <؟",
+      "review": "pending"
+    },
+    "git-3": {
+      "at": "2026-11-28T10:24:47.249495+00:00",
+      "id": "git-3",
+      "rating": "unknown",
+      "answer": "من cicd توی گیتلب نوشتم !‌ که pipeline داشته باشه و چند تا استیج داشته باشه ولی artifact و اینا چیه که می گی ؟",
+      "review": "pending"
+    },
+    "git-4": {
+      "at": "2026-11-28T10:25:26.448904+00:00",
+      "id": "git-4",
+      "rating": "unknown",
+      "answer": "این یه کم میره تو بحث کوبرنتیز و از لینوکس خارجه درسته ؟",
+      "review": "pending"
+    },
+    "containers-1": {
+      "at": "2026-11-28T10:26:27.968309+00:00",
+      "id": "containers-1",
+      "rating": "work",
+      "answer": "اینا رو بلدم --- برای امن نگه داشتن رو فقط بلد نیستم اونم اینه که باید یه یوزر تعریف بشه و همه کار ها با دسترسی روت انجام نشه ... ولی تاحالا انجام ندادم",
+      "review": "pending"
+    },
+    "containers-2": {
+      "at": "2026-11-28T10:27:10.687515+00:00",
+      "id": "containers-2",
+      "rating": "independent",
+      "answer": "یه کم بحث داکریه باید بررسی کرد و دید مشکل از کجاست وابسته به اپ هم هست !",
+      "review": "pending"
+    },
+    "containers-3": {
+      "at": "2026-11-28T10:27:32.111105+00:00",
+      "id": "containers-3",
+      "rating": "unknown",
+      "answer": "هیجی بلد نیستم اینا رو کامل باید یاد بگیرم !‌",
+      "review": "pending"
+    },
+    "containers-4": {
+      "at": "2026-11-28T10:28:07.366529+00:00",
+      "id": "containers-4",
+      "rating": "unknown",
+      "answer": "هیچی از این نمی دونم اصلا writable layer چیه !!!! نمی دونم !‌",
+      "review": "pending"
+    },
+    "k8s-1": {
+      "at": "2026-11-28T10:28:45.245924+00:00",
+      "id": "k8s-1",
+      "rating": "unknown",
+      "answer": "فقط می دونم یه مشکل جدی هست که CrashLoopBackOff رخ میده ولی نمی دونم داستان چیه !‌",
+      "review": "pending"
+    },
+    "k8s-2": {
+      "at": "2026-11-28T10:29:02.325971+00:00",
+      "id": "k8s-2",
+      "rating": "heard",
+      "answer": "فقط شنیدم بلد نیستم ‌!‌",
+      "review": "pending"
+    },
+    "k8s-3": {
+      "at": "2026-11-28T10:29:44.078494+00:00",
+      "id": "k8s-3",
+      "rating": "heard",
+      "answer": "سکرت برای پسورد ها و تووکن هاست --- کانفیگ مپ برای همون سکرت هاست ---- بقیه رو شنیدم یادم رفته",
+      "review": "pending"
+    },
+    "k8s-4": {
+      "at": "2026-11-28T10:29:54.588516+00:00",
+      "id": "k8s-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "infra-1": {
+      "at": "2026-11-28T10:30:32.676464+00:00",
+      "id": "infra-1",
+      "rating": "heard",
+      "answer": "می دونم باید observability بیارم بالا که اینا اتوماتیک چک بشود !",
+      "review": "pending"
+    },
+    "infra-2": {
+      "at": "2026-11-28T10:31:14.459529+00:00",
+      "id": "infra-2",
+      "rating": "unknown",
+      "answer": "نمی دونم اینا جزو ترس هام هست !‌",
+      "review": "pending"
+    },
+    "infra-3": {
+      "at": "2026-11-28T10:31:57.402964+00:00",
+      "id": "infra-3",
+      "rating": "unknown",
+      "answer": "عمودی یعنی داکر فایل چند تا میشه --- افقی یعنی سرور منابع اش زیاد بشه",
+      "review": "pending"
+    },
+    "infra-4": {
+      "at": "2026-11-28T10:32:13.594578+00:00",
+      "id": "infra-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "observability-1": {
+      "at": "2026-11-28T10:32:38.402101+00:00",
+      "id": "observability-1",
+      "rating": "unknown",
+      "answer": "دیتابیس کویری های بدی زده شده --- تقصیره بک اند کاره",
+      "review": "pending"
+    },
+    "observability-2": {
+      "at": "2026-11-28T10:48:12.128493+00:00",
+      "id": "observability-2",
+      "rating": "heard",
+      "answer": "رول بک رو که با کوبر میزنیم این لینوکسی نیست خیلی !‌بقیه موارد رو هم خیلی نمی دونم !‌",
+      "review": "pending"
+    },
+    "observability-3": {
+      "at": "2026-11-28T10:49:21.998552+00:00",
+      "id": "observability-3",
+      "rating": "heard",
+      "answer": "انجام ندادم کامل !‌و فکر می کنم روی یک مورد خاص ممکنه چیز دیگه کار رو خراب کنه ٬‌مثلا پرشدن رم ممکنه تو عملکرد سی پی یو تاثیر منفی بزاره !",
+      "review": "pending"
+    },
+    "observability-4": {
+      "at": "2026-11-28T10:49:45.085843+00:00",
+      "id": "observability-4",
+      "rating": "unknown",
+      "answer": "نمی دونم !‌بهم یاد بده",
+      "review": "pending"
+    },
+    "backup-1": {
+      "at": "2026-11-28T10:50:00.613614+00:00",
+      "id": "backup-1",
+      "rating": "unknown",
+      "answer": "نمی دونم !‌",
+      "review": "pending"
+    },
+    "backup-2": {
+      "at": "2026-11-28T10:50:11.973524+00:00",
+      "id": "backup-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "backup-3": {
+      "at": "2026-11-28T10:50:24.221453+00:00",
+      "id": "backup-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "backup-4": {
+      "at": "2026-11-28T10:50:33.363766+00:00",
+      "id": "backup-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "services-1": {
+      "at": "2026-11-28T10:50:45.716370+00:00",
+      "id": "services-1",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    "services-2": {
+      "at": "2026-11-28T10:50:53.771853+00:00",
+      "id": "services-2",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "services-3": {
+      "at": "2026-11-28T10:51:02.867421+00:00",
+      "id": "services-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "services-4": {
+      "at": "2026-11-28T10:51:08.211307+00:00",
+      "id": "services-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    "services-5": {
+      "at": "2026-11-28T10:51:26.498690+00:00",
+      "id": "services-5",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    }
   },
-  "history": [
+  "attempts": [
     {
-      "at": "2026-11-24T10:42:01.951125+00:00",
-      "question": "setup",
-      "answer": "کمی روی سیستم خودم یا WSL"
+      "at": "2026-11-28T08:43:18.816529+00:00",
+      "id": "shell-1",
+      "rating": "guided",
+      "answer": "خب این برای دیدن مسیره و اینکه فایل .env  هاید هست و با a نشون داده میشه حجم و اینا هم چاپ میشه دیگه چیز پیچیده ای نیست !",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:42:10.717679+00:00",
-      "question": "pwd",
-      "answer": "مسیر پوشه‌ای که الان داخلش هستم"
+      "at": "2026-11-28T08:45:08.970337+00:00",
+      "id": "shell-2",
+      "rating": "guided",
+      "answer": "داره تو لاگ های اپ دنبال 5 خط آخری می گرده که ERROR توشون هست !‌ درواقع من نمی دونم var/log چی هست !‌ مگه متغیر ها نباید تو var باشن ؟ چرا لاگ توشه ؟‌اگر بزرگ شد چی ؟ نمی دونم !!!‌باید از less or more استفاده کنیم ؟",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:42:24.024446+00:00",
-      "question": "path",
-      "answer": "report.txt"
+      "at": "2026-11-28T08:47:16.052931+00:00",
+      "id": "shell-3",
+      "rating": "unknown",
+      "answer": "می دونم دوتا جریان تو ترمینال هست اولی موفق و دومی ارور ها هست که دیفالت هر دو تا ترمیناله مگراینکه مشخص کنیم !‌این 1&2> فکر کنم میگه جفتشو بریز تو یه فایل یا dev/null  ولی دقیق اینا رو بلد نیستم ... `deploy >out.log 2>err.log` اینم نمی فهمم الان ۲ یعنی خطا رو بریز توی ارورر.لاگ ؟",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:42:28.512898+00:00",
-      "question": "ls",
-      "answer": "ls"
+      "at": "2026-11-28T09:39:44.567808+00:00",
+      "id": "shell-4",
+      "rating": "unknown",
+      "answer": "منظورت کرون جاب و کرون تبه ؟ بلد نیستم !‌",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:42:33.624359+00:00",
-      "question": "identity",
-      "answer": "whoami"
+      "at": "2026-11-28T09:40:37.143308+00:00",
+      "id": "files-1",
+      "rating": "guided",
+      "answer": "خود شخص دسترسی کامل داره --- گروهش فقط خواندن و اجرا کردن",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:43:07.700313+00:00",
-      "question": "diagnosis",
-      "answer": "system ctl reload / status - reboot"
+      "at": "2026-11-28T09:41:27.216339+00:00",
+      "id": "files-2",
+      "rating": "heard",
+      "answer": "میگه آیدی یوزر برای گروهها و .. چیه ؟ اون دستور آخرم با هویت سارا کامند رو انجام میده",
+      "review": "pending"
     },
     {
-      "at": "2026-11-24T10:43:21.203577+00:00",
-      "question": "confidence",
-      "answer": "کارهای معمول را انجام می‌دهم"
+      "at": "2026-11-28T09:42:06.703608+00:00",
+      "id": "files-3",
+      "rating": "unknown",
+      "answer": "من فقط بلدم اول sudo بزنم ... ولی  ACL و SELinux/AppArmor این ها را نمی دانم !",
+      "review": "pending"
     },
     {
-      "type": "challenge",
-      "at": "2026-11-24T11:07:20.392086+00:00",
-      "question": "service",
-      "choice": 1,
-      "reason": "خب مشخصه که باید لاگ بررسی شه ولی من چه می دونم لاگ چیه ؟ اصلا از کجا بدونم ریبوت کنم دوباره بدون مشکل بالا میاد ؟ اصلا سوالت بیشتر مدیریت بحرانه تا آموزش لینوکس",
-      "decision_correct": true
+      "at": "2026-11-28T09:42:53.311065+00:00",
+      "id": "files-4",
+      "rating": "unknown",
+      "answer": "پر خطر ترین 777 هست و تغییر گروه و ACL  نمی دونم چیه کلا !",
+      "review": "pending"
     },
     {
-      "type": "challenge",
-      "at": "2026-11-24T11:08:47.295822+00:00",
-      "question": "permission",
-      "choice": 2,
-      "reason": "سودو میزنم تو فایل شخصی خودم  - ولی تو سرور سریع سودو بزنی یا 777 بزنی مشکل امنیتی داره",
-      "decision_correct": true
+      "at": "2026-11-28T09:43:00.558410+00:00",
+      "id": "files-4",
+      "rating": "heard",
+      "answer": "پر خطر ترین 777 هست و تغییر گروه و ACL  نمی دونم چیه کلا !",
+      "review": "pending"
     },
     {
-      "type": "challenge",
-      "at": "2026-11-24T11:09:30.540767+00:00",
-      "question": "disk",
-      "choice": 1,
-      "reason": "باید ببینیم چی داره گند میزنه شاید یکی پرمیشن رایت گرفته  و داره اتک DoS میزنه !",
-      "decision_correct": true
+      "at": "2026-11-28T09:43:18.147834+00:00",
+      "id": "boot-1",
+      "rating": "unknown",
+      "answer": "هیچی از اینا نمی دونم !‌",
+      "review": "pending"
     },
     {
-      "type": "challenge",
-      "at": "2026-11-24T11:10:21.659215+00:00",
-      "question": "network",
-      "choice": 1,
-      "reason": "تخصص کافی تو dns  و شبکه و.. ندارم !",
-      "decision_correct": false
+      "at": "2026-11-28T09:43:54.461421+00:00",
+      "id": "boot-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم --- فقط می دونم .env رو ست نکرده ...",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:22:52.735427+00:00",
-      "step": "status",
-      "answer": "systemctl nginx status",
-      "correct": false
+      "at": "2026-11-28T09:44:43.124657+00:00",
+      "id": "boot-3",
+      "rating": "unknown",
+      "answer": "فقط می تونم تسک رو بکشم ! نمی دونم چطوری بفهمم چیا بهش وابسته ان و با از بین بردنش چیز هایی نابود میشه ؟ نمی دونم!‌",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:23:11.971247+00:00",
-      "step": "status",
-      "answer": "systemctl  status  nginx",
-      "correct": true
+      "at": "2026-11-28T09:44:55.870562+00:00",
+      "id": "boot-4",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:24:47.236223+00:00",
-      "step": "log",
-      "answer": "systemctl journal -u nginx -n 20",
-      "correct": false
+      "at": "2026-11-28T09:45:42.116398+00:00",
+      "id": "packages-1",
+      "rating": "guided",
+      "answer": "خب از .deb  نصب کنی دیگه آپدیت نمیشه و باید دستی آپدیت کنی از طریق اسنپ خب خودش sudo apt update -y --- upgrade -y",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:24:55.855513+00:00",
-      "step": "log",
-      "answer": "systemctl  -u nginx -n 20",
-      "correct": false
+      "at": "2026-11-28T09:46:48.379923+00:00",
+      "id": "packages-2",
+      "rating": "unknown",
+      "answer": "می دونم برای بهبود پکیج ها لینوکس میاد قسمت های مشترک رو یه لایبرری میکنه تا آپدیت و امنیت اوکی باشه --- برای رفع ایراد و شناسایی ابراد هیچی بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:25:08.194720+00:00",
-      "step": "log",
-      "answer": "journalctl  -u nginx -n 20",
-      "correct": true
+      "at": "2026-11-28T09:47:19.754039+00:00",
+      "id": "packages-3",
+      "rating": "unknown",
+      "answer": "این دقیقا همون جاییه که هیچی ازش بلد نیستم و باید یاد بگیرم !‌",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:25:25.285071+00:00",
-      "step": "interpret_log",
-      "answer": "port_busy",
-      "correct": true
+      "at": "2026-11-28T09:48:13.460768+00:00",
+      "id": "packages-4",
+      "rating": "unknown",
+      "answer": "می دونم انسیبل برای این کار استفاده میشه اینکه چی کار می کنه و چطور کار می کنه رو نمی دونم هیچی ! حتی دستی هم بلد نیستم چی کار کنم !‌",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:25:49.453749+00:00",
-      "step": "dns",
-      "answer": "getent api.example.com",
-      "correct": false
+      "at": "2026-11-28T09:49:46.285754+00:00",
+      "id": "storage-1",
+      "rating": "unknown",
+      "answer": "`df -h این فضای خالی دسک به صورت انسان خواندنی !‌\nlsblk فکر کنم پارتیشن ها یا دیسک ها رو نمایش میده \nfindmnt اینو هیچ درکی ندارنمم ازش !‌\nدیسک و پارتیشن فرقشونو بلدم ولی filesystem و mountpoint رو نمی دونم چیه و فرقش چیه !‌",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:26:01.356716+00:00",
-      "step": "dns",
-      "answer": "getent hosts api.example.com",
-      "correct": true
+      "at": "2026-11-28T09:50:50.657567+00:00",
+      "id": "storage-2",
+      "rating": "unknown",
+      "answer": "`df -h` می‌گوید `/var` صددرصد پر است، ولی `du -sh /var/*` جمعاً کمتر نشان می‌دهد. سه احتمال عملی و فرمان تشخیص هرکدام را بگو. اینو بهم توضیح بده اصلا هیچ درکی ازش ندارم !‌",
+      "review": "pending"
     },
     {
-      "type": "lab",
-      "at": "2026-11-24T11:26:13.536464+00:00",
-      "step": "interpret_dns",
-      "answer": "dns_failure",
-      "correct": true
+      "at": "2026-11-28T09:52:20.303984+00:00",
+      "id": "storage-3",
+      "rating": "unknown",
+      "answer": "نه تنها نمی دونم چیه - خودم تو کامپیوتر یه دیسک دارم هربار روشن می کنم مونتنمیشه اتوماتیک ! و برام معضل شده نه می دونم چرا اتوماتیک نمیشه مونت --- و حتی نمی دونم چرا این مدلیه و آیا  میشه اتوماتیک مونتش کرد !‌",
+      "review": "pending"
     },
     {
-      "type": "reflection",
-      "at": "2026-11-24T11:34:41.966333+00:00",
-      "step": "read_mode",
-      "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
+      "at": "2026-11-28T09:54:31.565722+00:00",
+      "id": "storage-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم هیچی !",
+      "review": "pending"
     },
     {
-      "type": "reflection",
-      "at": "2026-11-24T11:36:06.020852+00:00",
-      "step": "explain_denial",
-      "answer": "Permission denied و -rw-r----- 1 deploy web"
+      "at": "2026-11-28T09:54:54.347670+00:00",
+      "id": "network-1",
+      "rating": "unknown",
+      "answer": "بهم یاد بده ۱؟",
+      "review": "pending"
     },
     {
-      "type": "reflection",
-      "at": "2026-11-24T11:36:57.125810+00:00",
-      "step": "safe_fix",
-      "answer": "اضافه کردن web  به گروه www-data ?"
+      "at": "2026-11-28T09:55:14.794671+00:00",
+      "id": "network-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:43:49.229682+00:00",
-      "step": "owner",
-      "choice": 1,
-      "reason": "من نمی دونم چرا جلو فایل نوشته deploy , web  آیا اینا صاحبانش ؟ اگه ۳ تا درسترسی داشتن چی میشد ؟",
-      "decision_correct": true
+      "at": "2026-11-28T09:55:30.098719+00:00",
+      "id": "network-3",
+      "rating": "unknown",
+      "answer": "هیجی بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:44:48.161152+00:00",
-      "step": "identity",
-      "choice": 0,
-      "reason": "نمی فهمم gid , uid , groups جی ان و چه فرقی با هم دارن  ؟",
-      "decision_correct": true
+      "at": "2026-11-28T09:56:22.718609+00:00",
+      "id": "network-4",
+      "rating": "unknown",
+      "answer": "می دونم ssl تاریخ داره و منقضی میشه و سلف ساین هم می تونه باشه !‌ بیشتر بلد نیستم باید بهم یاد بدی",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:45:46.992978+00:00",
-      "step": "sudo_u",
-      "choice": 2,
-      "reason": "sudo -u این یعنی چی ؟ چی کار می کنه؟ آها فهمیدم بایه یوزر دیگه ران می کنه !‌",
-      "decision_correct": true
+      "at": "2026-11-28T09:56:36.831881+00:00",
+      "id": "web-1",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:46:51.814074+00:00",
-      "step": "membership",
-      "choice": 2,
-      "reason": "درک درستی ندارم !‌",
-      "decision_correct": false
+      "at": "2026-11-28T09:56:54.930244+00:00",
+      "id": "web-2",
+      "rating": "unknown",
+      "answer": "هیچی بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:47:00.464337+00:00",
-      "step": "membership",
-      "choice": 2,
-      "reason": "درک درستی ندارم !‌",
-      "decision_correct": false
+      "at": "2026-11-28T09:57:20.115787+00:00",
+      "id": "web-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:47:13.695965+00:00",
-      "step": "membership",
-      "choice": 0,
-      "reason": "درک درستی ندارم !‌",
-      "decision_correct": false
+      "at": "2026-11-28T09:57:34.829498+00:00",
+      "id": "web-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:47:16.427108+00:00",
-      "step": "membership",
-      "choice": 1,
-      "reason": "درک درستی ندارم !‌",
-      "decision_correct": true
+      "at": "2026-11-28T09:57:50.421844+00:00",
+      "id": "security-1",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "identity",
-      "at": "2026-11-24T11:48:03.834485+00:00",
-      "step": "transfer",
-      "choice": 2,
-      "reason": "فقط دسترسی رید داره چون عضو گروهیه که دسترسی خواندن داره !‌",
-      "decision_correct": true
+      "at": "2026-11-28T09:58:19.439727+00:00",
+      "id": "security-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم چطور least privilage اجرا میشه تو لینوکس",
+      "review": "pending"
     },
     {
-      "type": "port",
-      "at": "2026-11-24T12:13:43.106192+00:00",
-      "step": "listen",
-      "choice": 1,
-      "reason": "نمی دونم بلد نیستم !‌",
-      "decision_correct": true
+      "at": "2026-11-28T09:58:41.320922+00:00",
+      "id": "security-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
     },
     {
-      "type": "port",
-      "at": "2026-11-24T12:14:57.002524+00:00",
-      "step": "process",
-      "choice": 2,
-      "reason": "پایتون داره رو پورت 80 ران میشه",
-      "decision_correct": true
+      "at": "2026-11-28T09:59:24.179049+00:00",
+      "id": "security-4",
+      "rating": "unknown",
+      "answer": "آیپی ها رو باید شناسایی کنم بزارم تو بلک لیست - پسورد ها رو آپدیت کنم و.. ؟؟؟ درسته ؟ فایروالم چک کنم",
+      "review": "pending"
     },
     {
-      "type": "port",
-      "at": "2026-11-24T12:15:38.991555+00:00",
-      "step": "inspect",
-      "choice": 0,
-      "reason": "بلد نیستم جزیاات رو ببینم ؟",
-      "decision_correct": true
+      "at": "2026-11-28T09:59:54.396008+00:00",
+      "id": "automation-1",
+      "rating": "unknown",
+      "answer": "اگه جواب واضحی داره من بلد نیستم !‌",
+      "review": "pending"
     },
     {
-      "type": "port",
-      "at": "2026-11-24T12:16:40.038350+00:00",
-      "step": "transfer",
-      "choice": 2,
-      "reason": "خب مشخصه پورت ۳۰۰۰ رو گرفته",
-      "decision_correct": true
+      "at": "2026-11-28T10:00:54.205723+00:00",
+      "id": "automation-2",
+      "rating": "unknown",
+      "answer": "با exit code میشه کد خطا رو دید ... بقیه موارد بالا هیچ کدومو بلد نیستم !‌",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:22:27.770413+00:00",
-      "step": "map_502",
-      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      "at": "2026-11-28T10:01:44.535319+00:00",
+      "id": "automation-3",
+      "rating": "unknown",
+      "answer": "فقط می دونم از کرون تب و کرون جاب میشه استفاده کرد و از systemctl  هم میشه استفاده کرد بقیه موارد رو بلد نیستم",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:22:43.496696+00:00",
-      "step": "map_502",
-      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      "at": "2026-11-28T10:02:39.391337+00:00",
+      "id": "automation-4",
+      "rating": "heard",
+      "answer": "خب انسیبل آیدمپونتن هس و هربار با اجرا اگر چیزی غلط باشد درست می کنه و اگر درست باشه دست نمیزنه و خراب نمی کنه ... shell loop نمی دونم چیه !",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:22:44.448520+00:00",
-      "step": "map_502",
-      "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
+      "at": "2026-11-28T10:03:30.887685+00:00",
+      "id": "git-1",
+      "rating": "unknown",
+      "answer": "اگه سوالت گیته خوب من از git status , با ویژوالایز کزدن نگاه می کنم .... ولی دستی بخوای ببینی باید از git diff استفاده کنی !",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:23:14.371849+00:00",
-      "step": "test_upstream",
-      "answer": "هیچی نمی دونم !‌    کمک کن"
+      "at": "2026-11-28T10:03:37.351401+00:00",
+      "id": "git-1",
+      "rating": "work",
+      "answer": "اگه سوالت گیته خوب من از git status , با ویژوالایز کزدن نگاه می کنم .... ولی دستی بخوای ببینی باید از git diff استفاده کنی !",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:24:11.383035+00:00",
-      "step": "read_app_log",
-      "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
+      "at": "2026-11-28T10:23:41.587381+00:00",
+      "id": "git-2",
+      "rating": "independent",
+      "answer": "لاک داکر ؟ لاگ سی آی سی دی ماشین ؟ لاگ جاب ها <؟",
+      "review": "pending"
     },
     {
-      "type": "incident",
-      "at": "2026-11-24T12:25:10.486786+00:00",
-      "step": "recovery_plan",
-      "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
+      "at": "2026-11-28T10:24:47.249495+00:00",
+      "id": "git-3",
+      "rating": "unknown",
+      "answer": "من cicd توی گیتلب نوشتم !‌ که pipeline داشته باشه و چند تا استیج داشته باشه ولی artifact و اینا چیه که می گی ؟",
+      "review": "pending"
     },
     {
-      "type": "live",
-      "at": "2026-11-24T12:55:48.406248+00:00",
-      "step": "two_outputs",
-      "answer": "دو تا خط پرینت میشه"
+      "at": "2026-11-28T10:24:47.388135+00:00",
+      "id": "git-4",
+      "rating": "unknown",
+      "answer": "",
+      "review": "pending"
     },
     {
-      "type": "live",
-      "at": "2026-11-24T12:56:28.807244+00:00",
-      "step": "pipe",
-      "answer": "چاپ می کنه  hello"
+      "at": "2026-11-28T10:25:26.448904+00:00",
+      "id": "git-4",
+      "rating": "unknown",
+      "answer": "این یه کم میره تو بحث کوبرنتیز و از لینوکس خارجه درسته ؟",
+      "review": "pending"
     },
     {
-      "type": "live",
-      "at": "2026-11-24T12:57:00.285334+00:00",
-      "step": "pipe",
-      "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
+      "at": "2026-11-28T10:26:27.968309+00:00",
+      "id": "containers-1",
+      "rating": "work",
+      "answer": "اینا رو بلدم --- برای امن نگه داشتن رو فقط بلد نیستم اونم اینه که باید یه یوزر تعریف بشه و همه کار ها با دسترسی روت انجام نشه ... ولی تاحالا انجام ندادم",
+      "review": "pending"
     },
     {
-      "type": "live",
-      "at": "2026-11-24T12:57:55.218000+00:00",
-      "step": "merge",
-      "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
+      "at": "2026-11-28T10:27:10.687515+00:00",
+      "id": "containers-2",
+      "rating": "independent",
+      "answer": "یه کم بحث داکریه باید بررسی کرد و دید مشکل از کجاست وابسته به اپ هم هست !",
+      "review": "pending"
     },
     {
-      "type": "guided",
-      "at": "2026-11-24T13:04:42.748639+00:00",
-      "step": "redirect",
-      "answer": "خط دوم خروجی اش ریخته میشه تو ترمینال و میگه فایل وجود نداره",
-      "correct": false
+      "at": "2026-11-28T10:27:32.111105+00:00",
+      "id": "containers-3",
+      "rating": "unknown",
+      "answer": "هیجی بلد نیستم اینا رو کامل باید یاد بگیرم !‌",
+      "review": "pending"
     },
     {
-      "type": "guided",
-      "at": "2026-11-24T13:16:56.758666+00:00",
-      "step": "redirect",
-      "answer": "تو ترمینال چاپ می شود ...",
-      "correct": false
+      "at": "2026-11-28T10:28:07.366529+00:00",
+      "id": "containers-4",
+      "rating": "unknown",
+      "answer": "هیچی از این نمی دونم اصلا writable layer چیه !!!! نمی دونم !‌",
+      "review": "pending"
     },
     {
-      "type": "guided",
-      "at": "2026-11-24T13:16:58.564233+00:00",
-      "step": "redirect",
-      "answer": "تو ترمینال چاپ می شود ...",
-      "correct": false
+      "at": "2026-11-28T10:28:45.245924+00:00",
+      "id": "k8s-1",
+      "rating": "unknown",
+      "answer": "فقط می دونم یه مشکل جدی هست که CrashLoopBackOff رخ میده ولی نمی دونم داستان چیه !‌",
+      "review": "pending"
     },
     {
-      "type": "guided",
-      "at": "2026-11-24T13:16:59.109299+00:00",
-      "step": "redirect",
-      "answer": "تو ترمینال چاپ می شود ...",
-      "correct": false
+      "at": "2026-11-28T10:29:02.325971+00:00",
+      "id": "k8s-2",
+      "rating": "heard",
+      "answer": "فقط شنیدم بلد نیستم ‌!‌",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:29:44.078494+00:00",
+      "id": "k8s-3",
+      "rating": "heard",
+      "answer": "سکرت برای پسورد ها و تووکن هاست --- کانفیگ مپ برای همون سکرت هاست ---- بقیه رو شنیدم یادم رفته",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:29:54.588516+00:00",
+      "id": "k8s-4",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:30:32.676464+00:00",
+      "id": "infra-1",
+      "rating": "heard",
+      "answer": "می دونم باید observability بیارم بالا که اینا اتوماتیک چک بشود !",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:31:14.459529+00:00",
+      "id": "infra-2",
+      "rating": "unknown",
+      "answer": "نمی دونم اینا جزو ترس هام هست !‌",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:31:57.402964+00:00",
+      "id": "infra-3",
+      "rating": "unknown",
+      "answer": "عمودی یعنی داکر فایل چند تا میشه --- افقی یعنی سرور منابع اش زیاد بشه",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:32:13.594578+00:00",
+      "id": "infra-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:32:38.402101+00:00",
+      "id": "observability-1",
+      "rating": "unknown",
+      "answer": "دیتابیس کویری های بدی زده شده --- تقصیره بک اند کاره",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:48:12.128493+00:00",
+      "id": "observability-2",
+      "rating": "heard",
+      "answer": "رول بک رو که با کوبر میزنیم این لینوکسی نیست خیلی !‌بقیه موارد رو هم خیلی نمی دونم !‌",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:49:21.998552+00:00",
+      "id": "observability-3",
+      "rating": "heard",
+      "answer": "انجام ندادم کامل !‌و فکر می کنم روی یک مورد خاص ممکنه چیز دیگه کار رو خراب کنه ٬‌مثلا پرشدن رم ممکنه تو عملکرد سی پی یو تاثیر منفی بزاره !",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:49:45.085843+00:00",
+      "id": "observability-4",
+      "rating": "unknown",
+      "answer": "نمی دونم !‌بهم یاد بده",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:00.613614+00:00",
+      "id": "backup-1",
+      "rating": "unknown",
+      "answer": "نمی دونم !‌",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:11.973524+00:00",
+      "id": "backup-2",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:24.221453+00:00",
+      "id": "backup-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:33.363766+00:00",
+      "id": "backup-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:45.716370+00:00",
+      "id": "services-1",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:50:53.771853+00:00",
+      "id": "services-2",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:02.867421+00:00",
+      "id": "services-3",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:08.211307+00:00",
+      "id": "services-4",
+      "rating": "unknown",
+      "answer": "نمی دونم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:20.514894+00:00",
+      "id": "services-5",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:25.178900+00:00",
+      "id": "services-5",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:26.068184+00:00",
+      "id": "services-5",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
+    },
+    {
+      "at": "2026-11-28T10:51:26.498690+00:00",
+      "id": "services-5",
+      "rating": "unknown",
+      "answer": "بلد نیستم",
+      "review": "pending"
     }
   ],
-  "assessment": {
-    "technical_correct": 4,
-    "technical_total": 4,
-    "answered": 7,
-    "total": 7,
-    "needs_review": []
-  },
-  "challenges": {
-    "service": {
-      "at": "2026-11-24T11:07:20.392086+00:00",
-      "question": "service",
-      "choice": 1,
-      "reason": "خب مشخصه که باید لاگ بررسی شه ولی من چه می دونم لاگ چیه ؟ اصلا از کجا بدونم ریبوت کنم دوباره بدون مشکل بالا میاد ؟ اصلا سوالت بیشتر مدیریت بحرانه تا آموزش لینوکس",
-      "decision_correct": true
-    },
-    "permission": {
-      "at": "2026-11-24T11:08:47.295822+00:00",
-      "question": "permission",
-      "choice": 2,
-      "reason": "سودو میزنم تو فایل شخصی خودم  - ولی تو سرور سریع سودو بزنی یا 777 بزنی مشکل امنیتی داره",
-      "decision_correct": true
-    },
-    "disk": {
-      "at": "2026-11-24T11:09:30.540767+00:00",
-      "question": "disk",
-      "choice": 1,
-      "reason": "باید ببینیم چی داره گند میزنه شاید یکی پرمیشن رایت گرفته  و داره اتک DoS میزنه !",
-      "decision_correct": true
-    },
-    "network": {
-      "at": "2026-11-24T11:10:21.659215+00:00",
-      "question": "network",
-      "choice": 1,
-      "reason": "تخصص کافی تو dns  و شبکه و.. ندارم !",
-      "decision_correct": false
-    }
-  },
-  "challenge_assessment": {
-    "answered": 4,
-    "total": 4,
-    "decisions_correct": 3,
-    "needs_review": [
-      "network"
-    ],
-    "reasoning_status": "Needs human review; choice score does not grade written reasoning"
-  },
-  "lab": {
-    "attempts": [
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:22:52.735427+00:00",
-        "step": "status",
-        "answer": "systemctl nginx status",
-        "correct": false
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:23:11.971247+00:00",
-        "step": "status",
-        "answer": "systemctl  status  nginx",
-        "correct": true
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:24:47.236223+00:00",
-        "step": "log",
-        "answer": "systemctl journal -u nginx -n 20",
-        "correct": false
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:24:55.855513+00:00",
-        "step": "log",
-        "answer": "systemctl  -u nginx -n 20",
-        "correct": false
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:25:08.194720+00:00",
-        "step": "log",
-        "answer": "journalctl  -u nginx -n 20",
-        "correct": true
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:25:25.285071+00:00",
-        "step": "interpret_log",
-        "answer": "port_busy",
-        "correct": true
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:25:49.453749+00:00",
-        "step": "dns",
-        "answer": "getent api.example.com",
-        "correct": false
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:26:01.356716+00:00",
-        "step": "dns",
-        "answer": "getent hosts api.example.com",
-        "correct": true
-      },
-      {
-        "type": "lab",
-        "at": "2026-11-24T11:26:13.536464+00:00",
-        "step": "interpret_dns",
-        "answer": "dns_failure",
-        "correct": true
-      }
-    ],
-    "assessment": {
-      "completed": 5,
-      "total": 5,
-      "wrong_attempts": 4
-    },
-    "completed": {
-      "status": "2026-11-24T11:23:11.971247+00:00",
-      "log": "2026-11-24T11:25:08.194720+00:00",
-      "interpret_log": "2026-11-24T11:25:25.285071+00:00",
-      "dns": "2026-11-24T11:26:01.356716+00:00",
-      "interpret_dns": "2026-11-24T11:26:13.536464+00:00"
-    }
-  },
-  "reflections": {
-    "attempts": [
-      {
-        "type": "reflection",
-        "at": "2026-11-24T11:34:41.966333+00:00",
-        "step": "read_mode",
-        "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
-      },
-      {
-        "type": "reflection",
-        "at": "2026-11-24T11:36:06.020852+00:00",
-        "step": "explain_denial",
-        "answer": "Permission denied و -rw-r----- 1 deploy web"
-      },
-      {
-        "type": "reflection",
-        "at": "2026-11-24T11:36:57.125810+00:00",
-        "step": "safe_fix",
-        "answer": "اضافه کردن web  به گروه www-data ?"
-      }
-    ],
-    "latest": {
-      "read_mode": {
-        "type": "reflection",
-        "at": "2026-11-24T11:34:41.966333+00:00",
-        "step": "read_mode",
-        "answer": "تو خط اول میگه سودو می تونه بنویسه و بخونه  گروه می تونه بخونه و غریبه دسترسی نداره !‌احتمات اون ww-data  اسم یه گروهه اون آیدی های ۳۳ رو نمی دونم چیه !‌ اون sudo -u  همی نمی دونم چی کار می کنه !‌ اصلا نمی دونم sudoers  ها کی ان ؟ گروه رو بلد نیستم - منطقشو نمی دونم !‌البته می فهمی که یه درکی ازشون دارم !"
-      },
-      "explain_denial": {
-        "type": "reflection",
-        "at": "2026-11-24T11:36:06.020852+00:00",
-        "step": "explain_denial",
-        "answer": "Permission denied و -rw-r----- 1 deploy web"
-      },
-      "safe_fix": {
-        "type": "reflection",
-        "at": "2026-11-24T11:36:57.125810+00:00",
-        "step": "safe_fix",
-        "answer": "اضافه کردن web  به گروه www-data ?"
-      }
-    },
-    "assessment": {
-      "answered": 3,
-      "total": 3,
-      "reasoning_status": "Awaiting tutor review; no automatic correctness claim"
-    }
-  },
-  "identity": {
-    "attempts": [
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:43:49.229682+00:00",
-        "step": "owner",
-        "choice": 1,
-        "reason": "من نمی دونم چرا جلو فایل نوشته deploy , web  آیا اینا صاحبانش ؟ اگه ۳ تا درسترسی داشتن چی میشد ؟",
-        "decision_correct": true
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:44:48.161152+00:00",
-        "step": "identity",
-        "choice": 0,
-        "reason": "نمی فهمم gid , uid , groups جی ان و چه فرقی با هم دارن  ؟",
-        "decision_correct": true
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:45:46.992978+00:00",
-        "step": "sudo_u",
-        "choice": 2,
-        "reason": "sudo -u این یعنی چی ؟ چی کار می کنه؟ آها فهمیدم بایه یوزر دیگه ران می کنه !‌",
-        "decision_correct": true
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:46:51.814074+00:00",
-        "step": "membership",
-        "choice": 2,
-        "reason": "درک درستی ندارم !‌",
-        "decision_correct": false
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:47:00.464337+00:00",
-        "step": "membership",
-        "choice": 2,
-        "reason": "درک درستی ندارم !‌",
-        "decision_correct": false
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:47:13.695965+00:00",
-        "step": "membership",
-        "choice": 0,
-        "reason": "درک درستی ندارم !‌",
-        "decision_correct": false
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:47:16.427108+00:00",
-        "step": "membership",
-        "choice": 1,
-        "reason": "درک درستی ندارم !‌",
-        "decision_correct": true
-      },
-      {
-        "type": "identity",
-        "at": "2026-11-24T11:48:03.834485+00:00",
-        "step": "transfer",
-        "choice": 2,
-        "reason": "فقط دسترسی رید داره چون عضو گروهیه که دسترسی خواندن داره !‌",
-        "decision_correct": true
-      }
-    ],
-    "completed": {
-      "owner": "2026-11-24T11:43:49.229682+00:00",
-      "identity": "2026-11-24T11:44:48.161152+00:00",
-      "sudo_u": "2026-11-24T11:45:46.992978+00:00",
-      "membership": "2026-11-24T11:47:16.427108+00:00",
-      "transfer": "2026-11-24T11:48:03.834485+00:00"
-    },
-    "assessment": {
-      "completed": 5,
-      "total": 5,
-      "wrong_attempts": 3,
-      "reasoning_status": "Awaiting tutor review"
-    }
-  },
-  "port": {
-    "attempts": [
-      {
-        "type": "port",
-        "at": "2026-11-24T12:13:43.106192+00:00",
-        "step": "listen",
-        "choice": 1,
-        "reason": "نمی دونم بلد نیستم !‌",
-        "decision_correct": true
-      },
-      {
-        "type": "port",
-        "at": "2026-11-24T12:14:57.002524+00:00",
-        "step": "process",
-        "choice": 2,
-        "reason": "پایتون داره رو پورت 80 ران میشه",
-        "decision_correct": true
-      },
-      {
-        "type": "port",
-        "at": "2026-11-24T12:15:38.991555+00:00",
-        "step": "inspect",
-        "choice": 0,
-        "reason": "بلد نیستم جزیاات رو ببینم ؟",
-        "decision_correct": true
-      },
-      {
-        "type": "port",
-        "at": "2026-11-24T12:16:40.038350+00:00",
-        "step": "transfer",
-        "choice": 2,
-        "reason": "خب مشخصه پورت ۳۰۰۰ رو گرفته",
-        "decision_correct": true
-      }
-    ],
-    "completed": {
-      "listen": "2026-11-24T12:13:43.106192+00:00",
-      "process": "2026-11-24T12:14:57.002524+00:00",
-      "inspect": "2026-11-24T12:15:38.991555+00:00",
-      "transfer": "2026-11-24T12:16:40.038350+00:00"
-    },
-    "assessment": {
-      "completed": 4,
-      "total": 4,
-      "wrong_attempts": 0,
-      "reasoning_status": "Awaiting tutor review"
-    }
-  },
-  "incident": {
-    "attempts": [
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:22:27.770413+00:00",
-        "step": "map_502",
-        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
-      },
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:22:43.496696+00:00",
-        "step": "map_502",
-        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
-      },
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:22:44.448520+00:00",
-        "step": "map_502",
-        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
-      },
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:23:14.371849+00:00",
-        "step": "test_upstream",
-        "answer": "هیچی نمی دونم !‌    کمک کن"
-      },
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:24:11.383035+00:00",
-        "step": "read_app_log",
-        "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
-      },
-      {
-        "type": "incident",
-        "at": "2026-11-24T12:25:10.486786+00:00",
-        "step": "recovery_plan",
-        "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
-      }
-    ],
-    "latest": {
-      "map_502": {
-        "type": "incident",
-        "at": "2026-11-24T12:22:44.448520+00:00",
-        "step": "map_502",
-        "answer": "من نمی دونم چی کار کنم ! ولی فکر کنم یا nginx افتاده پایین یا کانفیگش خطا داره یا مشکل نتورکی وجود داره که نمی تونه بببینه nginx  رو فکر کنم \nsystemctl status nginx رو بزنم شاید یه چیز خوبی بهم بده ولی تقریبا میشه گفت مشکل از nginx  هست"
-      },
-      "test_upstream": {
-        "type": "incident",
-        "at": "2026-11-24T12:23:14.371849+00:00",
-        "step": "test_upstream",
-        "answer": "هیچی نمی دونم !‌    کمک کن"
-      },
-      "read_app_log": {
-        "type": "incident",
-        "at": "2026-11-24T12:24:11.383035+00:00",
-        "step": "read_app_log",
-        "answer": "تو پروژه بک اندی متغیر محیطی  database url ست نشده است"
-      },
-      "recovery_plan": {
-        "type": "incident",
-        "at": "2026-11-24T12:25:10.486786+00:00",
-        "step": "recovery_plan",
-        "answer": "چون می گی محرمانه است احتمالا باید مقدار url  رو ببینیم"
-      }
-    },
-    "assessment": {
-      "answered": 4,
-      "total": 4,
-      "reasoning_status": "Awaiting tutor review; free text is not automatically graded"
-    }
-  },
-  "live": {
-    "attempts": [
-      {
-        "type": "live",
-        "at": "2026-11-24T12:55:48.406248+00:00",
-        "step": "two_outputs",
-        "answer": "دو تا خط پرینت میشه"
-      },
-      {
-        "type": "live",
-        "at": "2026-11-24T12:56:28.807244+00:00",
-        "step": "pipe",
-        "answer": "چاپ می کنه  hello"
-      },
-      {
-        "type": "live",
-        "at": "2026-11-24T12:57:00.285334+00:00",
-        "step": "pipe",
-        "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
-      },
-      {
-        "type": "live",
-        "at": "2026-11-24T12:57:55.218000+00:00",
-        "step": "merge",
-        "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
-      }
-    ],
-    "latest": {
-      "two_outputs": {
-        "type": "live",
-        "at": "2026-11-24T12:55:48.406248+00:00",
-        "step": "two_outputs",
-        "answer": "دو تا خط پرینت میشه"
-      },
-      "pipe": {
-        "type": "live",
-        "at": "2026-11-24T12:57:00.285334+00:00",
-        "step": "pipe",
-        "answer": "چاپ می کنه  hello ---  چرا خطا ؟ خطا چیه ؟ مننمی فهمم"
-      },
-      "merge": {
-        "type": "live",
-        "at": "2026-11-24T12:57:55.218000+00:00",
-        "step": "merge",
-        "answer": "o 2>& ۱    این فکر کنم ۱ و ۲ رو که عادی و خطا باشه چاپ می کنه .."
-      }
-    },
-    "assessment": {
-      "answered": 3,
-      "total": 3,
-      "reasoning_status": "Awaiting tutor review; free text is not automatically graded"
-    }
-  },
-  "guided": {
-    "attempts": [
-      {
-        "type": "guided",
-        "at": "2026-11-24T13:04:42.748639+00:00",
-        "step": "redirect",
-        "answer": "خط دوم خروجی اش ریخته میشه تو ترمینال و میگه فایل وجود نداره",
-        "correct": false
-      },
-      {
-        "type": "guided",
-        "at": "2026-11-24T13:16:56.758666+00:00",
-        "step": "redirect",
-        "answer": "تو ترمینال چاپ می شود ...",
-        "correct": false
-      },
-      {
-        "type": "guided",
-        "at": "2026-11-24T13:16:58.564233+00:00",
-        "step": "redirect",
-        "answer": "تو ترمینال چاپ می شود ...",
-        "correct": false
-      },
-      {
-        "type": "guided",
-        "at": "2026-11-24T13:16:59.109299+00:00",
-        "step": "redirect",
-        "answer": "تو ترمینال چاپ می شود ...",
-        "correct": false
-      }
-    ],
-    "completed": {}
-  },
-  "course": {
-    "records": {
-      "103.3-1": {
-        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
-        "status": "passed",
-        "level": 2
-      },
-      "103.3-2": {
-        "incorrect": 2,
-        "help": true,
-        "status": "passed",
-        "level": 1
-      },
-      "101.1-1": {
-        "status": "passed",
-        "level": 2,
-        "note": "بلد نیستم خروجی ها رو کامل بخونم و فهمم و اینکه مگه PCI  فقط برای کارت گرافیک نیست ؟ ➜  ~ lspci\n00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)\n00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)\n00:14.0 USB controller: Intel Corporation 200 Series/Z370 Chipset Family USB 3.0 xHCI Controller\n00:16.0 Communication controller: Intel Corporation 200 Series PCH CSME HECI #1\n00:17.0 SATA controller: Intel Corp"
-      },
-      "101.2-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "نمی دونم دقیقا چی به چیه ؟ چی کجاست ؟ چطوری بوت میشه ترتیبشون چیه ؟ و..."
-      },
-      "103.6-1": {},
-      "200.1-1": {
-        "help": true
-      },
-      "103.3-9": {
-        "status": "reported",
-        "level": 1
-      },
-      "101.3-1": {
-        "help": true,
-        "note": "هیچ دیدی و درکی ازش ندارم - اصلا systemd کجاست ؟",
-        "status": "passed",
-        "level": 1
-      },
-      "103.3-26": {},
-      "201.1-1": {},
-      "212.5-1": {
-        "help": true
-      },
-      "102.1-1": {
-        "help": true,
-        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
-        "status": "passed",
-        "level": 1
-      },
-      "102.2-1": {
-        "status": "passed",
-        "level": 2,
-        "note": "خب من اینو چطوری ببینم کجا درکش کنم ؟"
-      },
-      "102.3-1": {
-        "help": true,
-        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
-        "status": "deferred"
-      },
-      "102.4-1": {
-        "status": "passed",
-        "level": 2,
-        "note": "من فقط بلدم فایل .deb رو نصب کنم باهاش"
-      },
-      "102.5-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred",
-        "note": "اصلا نمی فهمم چیه متوجه نمی شوم"
-      },
-      "102.6-1": {
-        "help": true,
-        "note": "بلد نیستم",
-        "status": "deferred"
-      },
-      "104.1-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred",
-        "note": "تو ویندوز این مفاهیمو بلدم ولی تو لینوکس پیچیده تره |! نمی فهمم"
-      },
-      "104.2-1": {
-        "help": true,
-        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
-        "status": "passed",
-        "level": 1
-      },
-      "104.3-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "Do you really want to continue<n>? no\ncheck aborted.\n➜  ~ /etc/fstab\nzsh: permission denied: /etc/fstab\n➜  ~ cd /etc/fstab\ncd: not a directory: /etc/fstab\n➜  ~ cat /etc/fstab\n# /etc/fstab: static file system information.\n#\n# Use 'blkid' to print the universally unique identifier for a\n# device; this may be used with UUID= as a more robust way to name devices\n# that works even if disks are added and removed. See fstab(5).\n#\n# <file system> <mount point>   <type>  <options>       <dump>  <pass>\n#"
-      },
-      "104.5-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1
-      },
-      "104.6-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred",
-        "note": "اصلا نشنیدم !‌inode ? symlink ?  من فقط ln -s  رو بلد بودم همونه یا فرق داره ؟"
-      },
-      "104.7-1": {
-        "help": true,
-        "status": "deferred"
-      },
-      "105.1-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred",
-        "level": 1
-      },
-      "105.2-1": {
-        "help": true,
-        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
-        "status": "passed",
-        "level": 1
-      },
-      "106.1-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "من خودم کوبونتو نصب می کنم ولی نمی دونم پشت صحنه x11 - wayland ,... چیه ؟"
-      },
-      "106.2-1": {
-        "incorrect": 1,
-        "status": "deferred",
-        "note": "Wayland پروتکل ارتباط نمایش است من فکر می کردم نرم افزاره"
-      },
-      "106.3-1": {
-        "help": true,
-        "status": "reported",
-        "level": 1
-      },
-      "107.1-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred"
-      },
-      "107.2-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "cron تب رو تقریبا بلدم ولی تاحالا باهاشون کار نکردم جدی"
-      },
-      "107.3-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1
-      },
-      "108.1-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1
-      },
-      "108.2-1": {
-        "help": true,
-        "incorrect": 1,
-        "status": "deferred"
-      },
-      "108.3-1": {
-        "status": "passed",
-        "level": 2
-      },
-      "108.4-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "نفهمیدم چیه و به چه دردی می خوره ؟"
-      },
-      "109.1-1": {
-        "help": true,
-        "status": "passed",
-        "level": 1,
-        "note": "TCP , UDP  رو تا حد خوبی متوجه ام"
-      },
-      "109.2-1": {
-        "help": true,
-        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
-        "status": "passed",
-        "level": 1
-      },
-      "103.3-5": {
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-7": {
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-8": {
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-3": {
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-6": {
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-10": {
-        "help": true,
-        "status": "reported",
-        "level": 1
-      },
-      "103.3-15": {},
-      "103.3-29": {},
-      "103.3-18": {},
-      "204.1-1": {},
-      "207.1-1": {},
-      "212.1-1": {}
-    },
-    "previous_feedback": {
-      "title": "متغیر برای برنامهٔ فرزند",
-      "text": "گفتی این بخش را بلدی و می‌خواهی جلوتر بروی. آشنایی‌ات ثبت شد؛ سنجش این مرحله برای مرور می‌ماند."
-    },
-    "current": "212.1-1",
-    "last_feedback": null,
-    "events": [
-      {
-        "at": "2026-11-24T13:46:21.782121+00:00",
-        "lesson": "103.3-1",
-        "action": "known",
-        "answer": "",
-        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:46:31.720954+00:00",
-        "lesson": "103.3-2",
-        "action": "answer",
-        "answer": "ls",
-        "note": "",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-24T13:46:37.438708+00:00",
-        "lesson": "103.3-2",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-24T13:46:59.745739+00:00",
-        "lesson": "103.3-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:47:08.144135+00:00",
-        "lesson": "103.3-1",
-        "action": "answer",
-        "answer": "ls",
-        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-24T13:47:09.493094+00:00",
-        "lesson": "103.3-1",
-        "action": "next",
-        "answer": "",
-        "note": "تا یه حدی بلدم و می دونم مثلا -lthr  هم میشزنن یا -a که هاید می کنه و... چیزی لازمه جدید تر بهم بگی ؟",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:47:27.869806+00:00",
-        "lesson": "103.3-2",
-        "action": "answer",
-        "answer": "ls -a",
-        "note": "",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-24T13:47:43.060580+00:00",
-        "lesson": "103.3-2",
-        "action": "answer",
-        "answer": "ls -la",
-        "note": "",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-24T13:47:50.338810+00:00",
-        "lesson": "103.3-2",
-        "action": "next",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:58:49.353690+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:59:38.981761+00:00",
-        "lesson": "101.2-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T13:59:43.406897+00:00",
-        "lesson": "101.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-24T14:00:22.334501+00:00",
-        "lesson": "103.6-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:15:57.297639+00:00",
-        "lesson": "200.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:16:16.377860+00:00",
-        "lesson": "200.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-24T14:42:09.538459+00:00",
-        "lesson": "103.3-9",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:42:20.751381+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:43:47.651427+00:00",
-        "lesson": "103.3-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:01.572990+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:06.381527+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:12.540927+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:19.669484+00:00",
-        "lesson": "101.3-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:41.910885+00:00",
-        "lesson": "103.3-26",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:44:59.962901+00:00",
-        "lesson": "201.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:55:53.047731+00:00",
-        "lesson": "212.5-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-24T14:56:11.039511+00:00",
-        "lesson": "212.5-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:09:54.363284+00:00",
-        "lesson": "101.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T08:12:46.902243+00:00",
-        "lesson": "101.1-1",
-        "action": "answer",
-        "answer": "lsusb",
-        "note": "بلد نیستم خروجی ها رو کامل بخونم و فهمم و اینکه مگه PCI  فقط برای کارت گرافیک نیست ؟ ➜  ~ lspci\n00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers (rev 05)\n00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)\n00:14.0 USB controller: Intel Corporation 200 Series/Z370 Chipset Family USB 3.0 xHCI Controller\n00:16.0 Communication controller: Intel Corporation 200 Series PCH CSME HECI #1\n00:17.0 SATA controller: Intel Corp",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:13:12.916186+00:00",
-        "lesson": "101.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:13:42.863755+00:00",
-        "lesson": "101.2-1",
-        "action": "answer",
-        "answer": "بوت لودر",
-        "note": "نمی دونم دقیقا چی به چیه ؟ چی کجاست ؟ چطوری بوت میشه ترتیبشون چیه ؟ و...",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:14:17.658777+00:00",
-        "lesson": "101.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "هیچ دیدی و درکی ازش ندارم",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:14:34.600336+00:00",
-        "lesson": "101.3-1",
-        "action": "answer",
-        "answer": "graphical.target",
-        "note": "هیچ دیدی و درکی ازش ندارم - اصلا systemd کجاست ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:14:59.778373+00:00",
-        "lesson": "102.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:15:57.731481+00:00",
-        "lesson": "102.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:16:18.674504+00:00",
-        "lesson": "102.1-1",
-        "action": "skip",
-        "answer": "",
-        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T08:16:34.770340+00:00",
-        "lesson": "102.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T08:16:47.466643+00:00",
-        "lesson": "102.1-1",
-        "action": "answer",
-        "answer": "/var",
-        "note": "الان این لاگ ها رو چطوری باید ببینم ؟  cd /var \n➜  /var ls \nbackups  crash  local  log   metrics  run   spool\ncache    lib    lock   mail  opt      snap  tmp\nلاگ چیه؟ ججرا تو var  هست ؟ نباید تو /log  باشه ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:17:27.842662+00:00",
-        "lesson": "102.2-1",
-        "action": "answer",
-        "answer": "GRUB",
-        "note": "خب من اینو چطوری ببینم کجا درکش کنم ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:17:42.498671+00:00",
-        "lesson": "102.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:57:00.970301+00:00",
-        "lesson": "102.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T08:57:06.074509+00:00",
-        "lesson": "102.3-1",
-        "action": "skip",
-        "answer": "",
-        "note": "ldd -u     \nldd: missing file arguments\nTry `ldd --help' for more information.\n➜  ~ ldd -u ./00000.jpeg \n        not a dynamic executable",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T08:58:29.323709+00:00",
-        "lesson": "102.4-1",
-        "action": "answer",
-        "answer": "dpkg -l",
-        "note": "من فقط بلدم فایل .deb رو نصب کنم باهاش",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T08:59:11.354285+00:00",
-        "lesson": "102.5-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:00:02.062628+00:00",
-        "lesson": "102.5-1",
-        "action": "answer",
-        "answer": "rpm -i sh.bash",
-        "note": "اصلا نمی فهمم چیه متوجه نمی شوم",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T09:00:45.345849+00:00",
-        "lesson": "102.6-1",
-        "action": "hint",
-        "answer": "",
-        "note": "بلد نیستم",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:01:29.592850+00:00",
-        "lesson": "102.6-1",
-        "action": "skip",
-        "answer": "",
-        "note": "بلد نیستم",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T09:02:03.638658+00:00",
-        "lesson": "104.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:03:14.170645+00:00",
-        "lesson": "104.1-1",
-        "action": "answer",
-        "answer": "فایل سیستمه",
-        "note": "تو ویندوز این مفاهیمو بلدم ولی تو لینوکس پیچیده تره |! نمی فهمم",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T09:04:47.444733+00:00",
-        "lesson": "104.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:05:03.263432+00:00",
-        "lesson": "104.2-1",
-        "action": "answer",
-        "answer": "fsck",
-        "note": "fsck from util-linux 2.41\ne2fsck 1.47.2 (1-Jan-2025)\n/dev/sdb2 is mounted.\n\n\n\nWARNING!!!  The filesystem is mounted.   If you continue you ***WILL***\ncause ***SEVERE*** filesystem damage.\n\n\nDo you really want to continue<n>? no\n این یعنی چی ؟ ----- این پایینیه چطوری تفسیر میشه ؟ Filesystem     1K-blocks      Used Available Use% Mounted on\ntmpfs            1570808      2692   1568116   1% /run\n/dev/sdb2      245020956 115255936 117245852  50% /\ntmpfs            7854032     71640   7782392   1% /d",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T09:05:19.179167+00:00",
-        "lesson": "104.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:07:10.480184+00:00",
-        "lesson": "104.3-1",
-        "action": "answer",
-        "answer": "/etc/fstab",
-        "note": "Do you really want to continue<n>? no\ncheck aborted.\n➜  ~ /etc/fstab\nzsh: permission denied: /etc/fstab\n➜  ~ cd /etc/fstab\ncd: not a directory: /etc/fstab\n➜  ~ cat /etc/fstab\n# /etc/fstab: static file system information.\n#\n# Use 'blkid' to print the universally unique identifier for a\n# device; this may be used with UUID= as a more robust way to name devices\n# that works even if disks are added and removed. See fstab(5).\n#\n# <file system> <mount point>   <type>  <options>       <dump>  <pass>\n#",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T09:07:43.914595+00:00",
-        "lesson": "104.5-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:07:46.499107+00:00",
-        "lesson": "104.5-1",
-        "action": "answer",
-        "answer": "خواندن",
-        "note": "",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T09:08:05.446251+00:00",
-        "lesson": "104.6-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:09:24.869971+00:00",
-        "lesson": "104.6-1",
-        "action": "answer",
-        "answer": "inode",
-        "note": "اصلا نشنیدم !‌inode ? symlink ?  من فقط ln -s  رو بلد بودم همونه یا فرق داره ؟",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T09:17:28.440080+00:00",
-        "lesson": "104.7-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:17:46.321920+00:00",
-        "lesson": "104.7-1",
-        "action": "skip",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T09:17:58.034736+00:00",
-        "lesson": "105.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:18:03.227419+00:00",
-        "lesson": "105.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:18:24.661741+00:00",
-        "lesson": "105.1-1",
-        "action": "answer",
-        "answer": "ٍEXPORT",
-        "note": "",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T09:19:15.251295+00:00",
-        "lesson": "105.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:19:25.204510+00:00",
-        "lesson": "105.2-1",
-        "action": "answer",
-        "answer": "۰",
-        "note": "در واقع همون exit کد صفر هست؟ یا باید صفر باشه یا کد خطا ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T09:19:38.389763+00:00",
-        "lesson": "106.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T09:20:48.238465+00:00",
-        "lesson": "106.1-1",
-        "action": "answer",
-        "answer": "Display",
-        "note": "من خودم کوبونتو نصب می کنم ولی نمی دونم پشت صحنه x11 - wayland ,... چیه ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T09:21:35.058458+00:00",
-        "lesson": "106.2-1",
-        "action": "answer",
-        "answer": "KDE رو من دوست دارم",
-        "note": "Wayland پروتکل ارتباط نمایش است من فکر می کردم نرم افزاره",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T12:34:20.965071+00:00",
-        "lesson": "106.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:34:30.629312+00:00",
-        "lesson": "106.3-1",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:34:46.158971+00:00",
-        "lesson": "107.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:34:47.305032+00:00",
-        "lesson": "107.1-1",
-        "action": "answer",
-        "answer": "id user",
-        "note": "",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T12:35:07.759320+00:00",
-        "lesson": "107.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:35:47.674935+00:00",
-        "lesson": "107.2-1",
-        "action": "answer",
-        "answer": "cron",
-        "note": "cron تب رو تقریبا بلدم ولی تاحالا باهاشون کار نکردم جدی",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:35:54.976706+00:00",
-        "lesson": "107.3-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:36:01.423836+00:00",
-        "lesson": "107.3-1",
-        "action": "answer",
-        "answer": "utf-8",
-        "note": "",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:36:10.510550+00:00",
-        "lesson": "108.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:36:15.702643+00:00",
-        "lesson": "108.1-1",
-        "action": "answer",
-        "answer": "ntp",
-        "note": "",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:36:30.563943+00:00",
-        "lesson": "108.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:36:31.307859+00:00",
-        "lesson": "108.2-1",
-        "action": "answer",
-        "answer": "-n 5",
-        "note": "",
-        "outcome": "retry"
-      },
-      {
-        "at": "2026-11-25T12:36:46.593788+00:00",
-        "lesson": "108.3-1",
-        "action": "answer",
-        "answer": "SMTP",
-        "note": "",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:36:56.904228+00:00",
-        "lesson": "108.4-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:37:51.994698+00:00",
-        "lesson": "108.4-1",
-        "action": "answer",
-        "answer": "lpstat",
-        "note": "نفهمیدم چیه و به چه دردی می خوره ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:38:05.463752+00:00",
-        "lesson": "109.1-1",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:38:29.317231+00:00",
-        "lesson": "109.1-1",
-        "action": "answer",
-        "answer": "TCP",
-        "note": "TCP , UDP  رو تا حد خوبی متوجه ام",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:41:47.144561+00:00",
-        "lesson": "109.2-1",
-        "action": "hint",
-        "answer": "",
-        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:41:55.631649+00:00",
-        "lesson": "109.2-1",
-        "action": "answer",
-        "answer": "ip addr",
-        "note": "درکی ندارم از این پیام و خروجیش ! مثلا lo: loopback چی میشه ؟",
-        "outcome": "correct"
-      },
-      {
-        "at": "2026-11-25T12:42:21.949272+00:00",
-        "lesson": "103.3-5",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:42:32.492448+00:00",
-        "lesson": "103.3-5",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:42:39.995249+00:00",
-        "lesson": "103.3-7",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:42:47.178865+00:00",
-        "lesson": "103.3-8",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:42:48.946564+00:00",
-        "lesson": "103.3-9",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:42:55.290069+00:00",
-        "lesson": "103.3-3",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:44:22.225746+00:00",
-        "lesson": "103.3-6",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:44:28.813213+00:00",
-        "lesson": "103.3-10",
-        "action": "hint",
-        "answer": "",
-        "note": "",
-        "outcome": "hint"
-      },
-      {
-        "at": "2026-11-25T12:51:06.182100+00:00",
-        "lesson": "103.3-2",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:51:13.964326+00:00",
-        "lesson": "103.3-10",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:51:15.908498+00:00",
-        "lesson": "103.3-10",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T12:51:29.715879+00:00",
-        "lesson": "103.3-15",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T13:05:52.825818+00:00",
-        "lesson": "103.3-29",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T13:06:04.794900+00:00",
-        "lesson": "103.3-18",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T13:11:40.296390+00:00",
-        "lesson": "105.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T13:11:45.492135+00:00",
-        "lesson": "105.1-1",
-        "action": "known",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T13:12:20.144845+00:00",
-        "lesson": "204.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T14:18:52.699175+00:00",
-        "lesson": "207.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T14:19:20.993890+00:00",
-        "lesson": "212.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      },
-      {
-        "at": "2026-11-25T14:19:29.415371+00:00",
-        "lesson": "212.1-1",
-        "action": "open",
-        "answer": "",
-        "note": "",
-        "outcome": null
-      }
-    ]
+  "profile": {
+    "experience": "من تو محل کار حدود ۳ ساله به صورت مبتدی لینوکس رو استفاده می کنم کامند های بسار ساده شو بلدم و لی خیلی عمیق بلد نیستم هدفم اینه لینوکس برایالپیک ۱ و ۲ رو قورت بدم تا بتونم تمام مفاهیم لینوکس بلد باشم و به عنوان دوآپس کار یا سیس ادمین مشغول به کار بشوم",
+    "target": "بیشتر هدفم غقده گشایی در بلد نبودن لینوکسه و می خوام به عنوان یک سنیور دوآپس کار لینوکس و شبکه رو بلد باشم",
+    "preferences": "چیزایی که حس بلد بودن بهم میده - چالش هایی که دوآپس کارای واقعی و سیس ادمین ها با تجربه فقط بلدن حل کنن ۰- حس استاد شدن در لینوکس و شبکه -",
+    "at": "2026-11-28T08:43:16.647942+00:00"
   }
 }

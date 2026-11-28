@@ -3,310 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مربی لینوکس · از ls تا LPIC</title>
+<title>مصاحبهٔ فنی تو · لینوکس و DevOps</title>
 <style>
-:root {
-  color-scheme: light;
-  --bg:#edf0ed; --card:#f7f8f5; --surface:#edf2ed; --field:#fbfcfa;
-  --line:#cad4cf; --field-line:#85968e; --text:#24312c; --muted:#495c53;
-  --accent:#306650; --primary:#d6e7da; --good:#2f6850; --good-bg:#e9f2ea;
-  --review:#785220; --review-bg:#f4ede1; --focus:#355e84;
-  font: 17px/1.9 Vazirmatn, "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg:#171d1b; --card:#222a27; --surface:#293630; --field:#1d2622;
-  --line:#42534b; --field-line:#71867b; --text:#e2ebe6; --muted:#becbc3;
-  --accent:#b1d7c0; --primary:#364d40; --good:#b2d9c2; --good-bg:#2b3b32;
-  --review:#e2c298; --review-bg:#3a3328; --focus:#b1cdea;
-}
-* { box-sizing:border-box }
-body { margin:0; background:var(--bg); color:var(--text) }
-main { max-width:1060px; margin:auto; padding:24px clamp(16px,4vw,42px) 64px }
-header, nav, .actions { display:flex; align-items:center; gap:.7rem; flex-wrap:wrap }
-header { justify-content:space-between; padding:0 0 14px; border-bottom:1px solid var(--line) }
-nav { column-gap:1rem }
-nav a { text-underline-offset:.25em }
-header strong { font-size:1.13rem }
-h1,h2,h3 { line-height:1.55; margin:0 0 .45rem; font-weight:750 }
-h1 { font-size:clamp(1.85rem,5vw,2.8rem); margin-top:1.35rem }
-h2 { font-size:clamp(1.18rem,3vw,1.45rem) }
-h3 { font-size:1.06rem }
-p { margin:0 0 .7rem }
-p:last-child { margin-bottom:0 }
-small { display:block; color:var(--muted); font-size:.88rem }
-a { color:var(--accent) }
-button,input,textarea { font:inherit }
-button {
-  padding:.4rem .85rem; border:1px solid var(--field-line); border-radius:9px;
-  color:var(--text); background:var(--card); cursor:pointer;
-}
-button.primary { background:var(--primary); border-color:var(--field-line); font-weight:750 }
-button:hover { background:var(--surface) }
-button:disabled { opacity:.65; cursor:wait }
-:focus-visible { outline:2px solid var(--focus); outline-offset:4px }
-input,textarea {
-  display:block; width:100%; margin:.3rem 0 .65rem; padding:.55rem .7rem;
-  background:var(--field); color:var(--text); border:1px solid var(--field-line); border-radius:9px;
-}
-input::placeholder,textarea::placeholder { color:var(--muted); opacity:1 }
-textarea { resize:vertical; min-height:90px }
-label { font-weight:650 }
-bdi { font-family:ui-monospace,monospace; color:var(--accent) }
-.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:clamp(16px,3vw,25px); margin-top:16px }
-.stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px }
-.stats .card h2 { font-size:1rem; margin-bottom:.1rem }
-.stats .card p { margin-bottom:.25rem }
-.metric { color:var(--accent); font-size:1.2rem; font-weight:750 }
-progress { display:block; width:100%; height:9px; margin:.55rem 0; accent-color:var(--accent) }
-.lesson { display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); gap:clamp(18px,3vw,32px) }
-.scene { border-inline-start:3px solid var(--accent); padding:.75rem .9rem; background:var(--surface); border-radius:7px; margin:.65rem 0 .9rem }
-#practice { margin-top:1rem; padding-top:.85rem; border-top:1px solid var(--line) }
-#practice .actions { margin-top:.55rem }
-#controls { padding-inline-start:1.25rem; border-inline-start:1px solid var(--line) }
-#controls small { margin-top:.65rem }
-#feedback:not(:empty) { margin:12px 0 0; padding:.65rem .8rem; background:var(--surface); border-radius:8px }
-#last { border-inline-start:3px solid var(--field-line) }
-#last[data-kind="correct"] { border-inline-start-color:var(--good); background:var(--good-bg) }
-#last[data-kind="retry"] { border-inline-start-color:var(--review); background:var(--review-bg) }
-details { border-top:1px solid var(--line); padding:.35rem 0 }
-summary { cursor:pointer; font-weight:700; padding:.3rem }
-.group { margin-inline-start:.85rem }
-.station { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:.35rem; border-bottom:1px solid var(--line) }
-.station[data-status="passed"] .mark { color:var(--good) }
-.station[data-status="deferred"] .mark { color:var(--review) }
-.station[aria-current="step"] { background:var(--surface); border-radius:8px }
-.station button { text-align:right }
-.mark { flex-shrink:0 }
-#status,#map-items { margin-top:12px }
-[hidden] { display:none!important }
-@media(max-width:680px) {
-  .lesson,.stats { grid-template-columns:minmax(0,1fr) }
-  .stats { gap:0 }
-  #controls { border-inline-start:0; border-top:1px solid var(--line); padding:1rem 0 0 }
-  .station { align-items:flex-start; flex-direction:column }
-}
+:root{color-scheme:light;--bg:#f2f0e9;--paper:#fffcf5;--ink:#202a2d;--muted:#586468;--line:#d8d8cf;--accent:#0e6c63;--accent2:#e1f1e8;--warm:#e9ad4a;--focus:#1d70b8;--field:#fff;--shadow:0 12px 32px #253d3012;font:16px/1.8 Tahoma,"Noto Sans Arabic",sans-serif}
+:root[data-theme=dark]{color-scheme:dark;--bg:#151d20;--paper:#202b2e;--ink:#ebf3ef;--muted:#b5c3c0;--line:#3c4e4d;--accent:#80d5be;--accent2:#2b4540;--warm:#efc779;--focus:#95c8fc;--field:#192326;--shadow:0 12px 32px #0003}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}button,textarea,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:wait}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}main{max-width:1250px;margin:auto;padding:20px clamp(16px,4vw,48px) 70px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px}header strong{font-size:1.1rem}.top-actions{display:flex;gap:8px;align-items:center}.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:7px 12px;text-decoration:none}.ghost:hover,.section:hover{background:var(--accent2)}.hero{padding:36px 0 25px;display:grid;grid-template-columns:1.4fr .6fr;gap:26px;align-items:end}.eyebrow{font-size:.8rem;letter-spacing:.04em;color:var(--accent);font-weight:800}.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.4;margin:8px 0 14px}.hero p{margin:0;color:var(--muted);max-width:65ch}.hero-stat{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:19px;box-shadow:var(--shadow)}.big{font-size:2.1rem;color:var(--accent);font-weight:800;line-height:1.2}.meter{height:10px;background:var(--line);border-radius:20px;overflow:hidden;margin:13px 0}.meter i{display:block;height:100%;background:var(--accent);width:0%;transition:width .3s}.layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:20px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}aside{padding:18px;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}h2,h3{line-height:1.5}aside h2{font-size:1.1rem;margin:0 0 3px}aside p{font-size:.84rem;color:var(--muted);margin:0 0 15px}.section{width:100%;background:transparent;border:0;border-radius:10px;text-align:right;color:var(--ink);padding:8px 10px;display:flex;justify-content:space-between;gap:6px;align-items:center}.section[aria-current=true]{background:var(--accent2);color:var(--accent);font-weight:800}.section small{white-space:nowrap;color:var(--muted)}.content{min-width:0}.intro,.question-card,.finish{padding:clamp(20px,3vw,32px);margin-bottom:18px}.intro h2,.finish h2{margin:0 0 10px}.intro p,.finish p{color:var(--muted);margin:0 0 13px}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.profile-grid label{font-size:.88rem;font-weight:700}.profile-grid textarea{min-height:90px}.tiny{font-size:.83rem;color:var(--muted)}.button{border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:10px;padding:8px 18px;font-weight:800}.button:hover{filter:brightness(.9)}.intro .button{margin-top:10px}.question-meta{color:var(--accent);font-size:.85rem;font-weight:800}.question-card h2{font-size:clamp(1.35rem,3vw,1.85rem);margin:9px 0 5px}.scope{color:var(--muted);font-size:.85rem}.prompt{white-space:pre-wrap;overflow-wrap:anywhere;border-right:4px solid var(--warm);padding:15px 19px;background:var(--bg);border-radius:10px;margin:18px 0 20px;font-size:1.07rem;line-height:2}.hint{font-size:.86rem;color:var(--muted);margin-bottom:13px}.rating-title{display:block;font-weight:800;margin:12px 0 7px}.ratings{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.ratings label{border:1px solid var(--line);border-radius:10px;padding:8px 7px;font-size:.82rem;cursor:pointer;text-align:center;min-height:60px;display:grid;place-items:center}.ratings label:has(input:checked){border-color:var(--accent);background:var(--accent2);color:var(--accent);font-weight:800}.ratings input{position:absolute;opacity:0;width:1px;height:1px}.ratings label:focus-within{outline:3px solid var(--focus)}textarea{width:100%;resize:vertical;min-height:175px;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:12px 14px;line-height:1.9}.answer-label{display:block;font-weight:800;margin:18px 0 7px}.form-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.saved{font-size:.82rem;color:var(--accent);font-weight:700}.muted{color:var(--muted)}#status{min-height:28px;margin:8px 0;color:var(--accent)}.finish{border-right:4px solid var(--accent)}[hidden]{display:none!important}@media(max-width:850px){.layout{grid-template-columns:1fr}aside{position:static;max-height:none}.sections{display:grid;grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.profile-grid{grid-template-columns:1fr}}@media(max-width:550px){.sections{grid-template-columns:1fr 1fr}.ratings{grid-template-columns:1fr 1fr}.hero{padding-top:22px}}
 </style>
 </head>
 <body><main>
-<header><strong>لینوکس‌لب</strong><nav aria-label="رفتن به بخش"><a href="#lesson-card">درس</a><a href="#map">نقشه و کارنامه</a><a href="#last">بازخورد قبلی</a></nav><button type="button" id="theme-switch" aria-label="تغییر روشنایی صفحه">تغییر روشنایی</button></header>
-<h1>از <bdi>ls</bdi> تا LPIC</h1>
-<p>هر مرحله یک مفهوم و یک مثال دارد. سؤال‌ها اختیاری‌اند.</p>
-<div class="stats" id="stats"></div>
-<section class="card" id="last"><h2>بازخورد درس قبل</h2><p id="previous">در حال خواندن پاسخ‌های قبلی…</p></section>
-<section class="card lesson" id="lesson-card" aria-labelledby="lesson-title">
-<div>
-<small id="lesson-id"></small><h2 id="lesson-title" tabindex="-1">در حال باز کردن درس…</h2>
-<div class="scene" id="explanation" hidden></div>
-<section class="scene" id="guide" hidden><h3>راهنما</h3><p id="guide-text"></p></section>
-<form id="practice" hidden>
-<label id="question" for="answer"></label>
-<input id="answer" autocomplete="off" aria-describedby="question-format">
-<small id="question-format">جواب اختیاری است. می‌توانی این کادر را خالی بگذاری.</small>
-<div class="actions"><button type="submit" class="primary">ادامه</button></div>
-</form>
-<p id="feedback" role="status"></p>
-</div>
-<aside id="controls" hidden>
-<h3>تو به درس جهت بده</h3>
-<label for="note">این بخش را چقدر بلدی؟</label>
-<textarea id="note" placeholder="مثلاً ls را بلدم ولی گزینه‌هایش را بلد نیستم…"></textarea>
-<div class="actions">
-<button data-action="known">اصلش را بلدم، بریم جلو</button>
-</div>
-<small>یادداشتت همراه درس ذخیره می‌شود. درس ردشده را بعداً از نقشه باز کن.</small>
-</aside>
-</section>
-<section class="card" id="map">
-<h2>نقشه و کارنامهٔ مهارت‌ها</h2>
-<p>برای هر هدف، تمرین و سطح ثبت‌شده را می‌بینی. سنجش کوتاه فقط بخشی از هر هدف رسمی را پوشش می‌دهد. نتیجهٔ آزمون جامع هنوز ثبت نشده است.</p>
-<small>سطح ۰ · سنجش نشده | سطح ۱ · آشنا یا با کمک | سطح ۲ · پاسخ مستقل در این تمرین</small>
-<div id="map-items"></div>
-<p><a href="https://www.lpi.org/our-certifications/exam-101-102-objectives/">اهداف رسمی LPIC-1</a> · <a href="https://www.lpi.org/our-certifications/exam-201-202-objectives/">اهداف رسمی LPIC-2</a></p>
-</section>
-<p id="status" role="status"></p>
-</main>
+<header><strong>لینوکس‌لب <span class="muted">/ ارزیابی تازه</span></strong><div class="top-actions"><a class="ghost" href="/api/export" download="linux-assessment.json">دریافت پاسخ‌ها</a><button class="ghost" id="theme" type="button">تیره / روشن</button></div></header>
+<section class="hero"><div><div class="eyebrow">گام ۰۱ · شناخت واقعی نقطهٔ شروع</div><h1>مصاحبهٔ فنی تو،<br>با حوصله و بی‌نمره</h1><p>مثل یک موقعیت کاری فکر کن: از خروجی‌ها سرنخ بگیر، بگو چه می‌دانی و چه چیزی را آزمایش می‌کنی. می‌توانی صریح بنویسی «نمی‌دانم». جواب کامل لازم نیست؛ توضیح واقعی‌ات برای برنامهٔ گام بعد ارزش دارد.</p></div><div class="hero-stat"><div class="eyebrow">پاسخ‌های ثبت‌شده</div><div class="big" id="count">در حال بارگذاری</div><div class="meter"><i id="meter"></i></div><div class="tiny">۱۶ حوزه · LPIC-1 و LPIC-2 در کنار نیازهای DevOps</div></div></section>
+<div class="layout"><aside class="panel"><h2>مسیر مصاحبه</h2><p>هر حوزه را باز کن؛ سؤال‌ها را به هر ترتیبی که خواستی جواب بده.</p><div id="sections" class="sections"></div></aside><div class="content">
+<section class="panel intro" id="intro"><h2>اول چند خط دربارهٔ خودت</h2><p>این‌ها به مربی کمک می‌کنند تجربهٔ واقعی را از اسم ابزارهایی که فقط شنیده‌ای جدا کند. اختیاری‌اند.</p><div class="profile-grid"><label>تا امروز کجا با لینوکس/DevOps کار کرده‌ای؟<textarea id="experience" placeholder="مثلاً سیستم شخصی، سرور واقعی، پروژهٔ شخصی، کار تیمی..."></textarea></label><label>دوست داری برای چه نقشی آماده شوی؟<textarea id="target" placeholder="مثلاً Sysadmin، SRE، DevOps، مصاحبهٔ استخدامی..."></textarea></label><label>چه نوع سؤال یا تمرینی بیشتر به تو می‌چسبد؟<textarea id="preferences" placeholder="مثلاً عیب‌یابی واقعی، خروجی ترمینال، طراحی راه‌حل..."></textarea></label></div><button type="button" class="button" id="save-profile">ذخیرهٔ معرفی</button> <span class="tiny" id="profile-state"></span></section>
+<section class="panel question-card" id="question-card" hidden><div class="question-meta" id="question-meta"></div><h2 id="section-title"></h2><div class="scope" id="scope"></div><div class="prompt" id="prompt"></div><p class="hint">هرجا لازم است فرمان، دلیل، خروجی مورد انتظار و راه تأیید را با زبان خودت بنویس. اگر تجربهٔ عملی نداری، فرضیه‌ات را بگو.</p><form id="answer-form"><span class="rating-title">خودت در این موضوع کجا ایستاده‌ای؟</span><div class="ratings" id="ratings"></div><label class="answer-label" for="answer">توضیح تو</label><textarea id="answer" placeholder="چه می‌فهمی؟ اولین آزمایش تو چیست؟ از کجا می‌فهمی درست بوده؟" spellcheck="false"></textarea><div class="form-footer"><div class="nav"><button class="button" type="submit" id="save-answer">ثبت پاسخ و سؤال بعد</button><button class="ghost" type="button" id="prev">قبلی</button><button class="ghost" type="button" id="next">بعدی</button></div><span class="saved" id="saved"></span></div></form></section>
+<section class="panel finish"><h2>بعد از این ارزیابی چه می‌شود؟</h2><p>پاسخ‌ها روی همین دستگاه ذخیره می‌شوند. من توضیح‌هایت را می‌خوانم و با شواهد، تصویر دقیقی از توانایی‌ها و جاهای مبهم می‌دهم. تا وقتی تو نگویی، گام آموزشی بعد را شروع نمی‌کنیم.</p><p class="tiny">پاسخ تشریحی اینجا با چند کلمهٔ کلیدی نمره نمی‌گیرد. تغییر جواب، تلاش قبلی را هم در تاریخچه نگه می‌دارد.</p></section><p id="status" role="status"></p>
+</div></div></main>
 <script>
-const byId = id => document.getElementById(id);
-const number = new Intl.NumberFormat('fa');
-const themeButton = byId('theme-switch');
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
-let userTheme;
-try {
-  userTheme = localStorage.getItem('linux-coach-theme');
-} catch {
-  // A private or restricted browser may block local storage.
-}
-function applyTheme() {
-  const theme = ['light', 'dark'].includes(userTheme) ? userTheme : systemTheme.matches ? 'dark' : 'light';
-  document.documentElement.dataset.theme = theme;
-  themeButton.textContent = theme === 'dark' ? 'زمینهٔ روشن' : 'زمینهٔ تیره';
-}
-themeButton.onclick = () => {
-  userTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  try {
-    localStorage.setItem('linux-coach-theme', userTheme);
-  } catch {
-    // The setting still applies until this page closes.
-  }
-  applyTheme();
-};
-systemTheme.addEventListener('change', applyTheme);
-applyTheme();
-const topics = {
-  101:'معماری و بوت',102:'نصب و بسته‌ها',103:'شل و ابزارهای یونیکس',
-  104:'دستگاه، فایل‌سیستم و مجوز',105:'محیط شل و اسکریپت',106:'دسکتاپ و دسترسی‌پذیری',
-  107:'مدیریت کاربران و زمان‌بندی',108:'خدمات ضروری',109:'شبکهٔ پایه',110:'امنیت پایه',
-  200:'برنامه‌ریزی ظرفیت',201:'کرنل لینوکس',202:'راه‌اندازی پیشرفته',203:'فایل‌سیستم و دستگاه‌ها',
-  204:'ذخیره‌سازی پیشرفته',205:'تنظیم و عیب‌یابی شبکه',206:'نگهداری سیستم',207:'DNS',
-  208:'وب و پراکسی',209:'اشتراک فایل',210:'مدیریت کلاینت',211:'ایمیل',212:'امنیت سیستم'
-};
-const exams = [
-  ['101',101,104],['102',105,110],['201',200,206],['202',207,212]
-];
-let lessons = [], state, busy = false;
-const statusLabel = {passed:'حل شد',deferred:'برای مرور',reported:'آشنایی اعلام شده'};
-
-function create(tag, text) {
-  const element = document.createElement(tag);
-  if (text) element.textContent = text;
-  return element;
-}
-function topic(lesson) {
-  return Number(lesson.objective.split('.')[0]);
-}
-function passed(lesson) {
-  return state.records[lesson.id]?.status === 'passed';
-}
-function summaries() {
-  const cards = [1, 2].map(level => {
-    const items = lessons.filter(lesson => Math.floor(topic(lesson) / 100) === level);
-    const done = items.filter(passed).length;
-    const groups = [...new Set(items.map(item => item.objective))];
-    const checked = groups.filter(code => items.filter(item => item.objective === code).every(passed)).length;
-    const deferred = items.filter(item => ['reported','deferred'].includes(state.records[item.id]?.status)).length;
-    const card = create('section');
-    card.className = 'card';
-    const count = create('p', `${number.format(done)} از ${number.format(items.length)} تمرین حل شده`);
-    count.className = 'metric';
-    const meter = create('progress');
-    meter.max = items.length;
-    meter.value = done;
-    meter.setAttribute('aria-label', `تمرین‌های LPIC-${level}`);
-    card.append(create('h2', `LPIC-${level}`), count, meter,
-      create('p', `${number.format(items.length - done)} تمرین باقی است · ${number.format(deferred)} برای مرور`),
-      create('small', `تمرین‌های ${number.format(checked)} از ${number.format(groups.length)} هدف تکمیل شده`));
-    return card;
-  });
-  byId('stats').replaceChildren(...cards);
-}
-function renderMap() {
-  const root = byId('map-items');
-  const open = new Set([...root.querySelectorAll('details[open]')].map(node => node.dataset.key));
-  const current = lessons.find(lesson => lesson.id === state.current);
-  const activeTopic = current ? topic(current) : null;
-  const groups = exams.map(([exam, first, last]) => {
-    const wrapper = create('details');
-    wrapper.dataset.key = exam + '-exam';
-    wrapper.open = open.has(wrapper.dataset.key) || (activeTopic >= first && activeTopic <= last);
-    const items = lessons.filter(lesson => topic(lesson) >= first && topic(lesson) <= last);
-    wrapper.append(create('summary', `آزمون ${exam} · ${number.format(items.filter(passed).length)} از ${number.format(items.length)} تمرین`));
-    for (let id = first; id <= last; id++) {
-      const section = create('details');
-      section.dataset.key = String(id);
-      section.className = 'group';
-      section.open = open.has(section.dataset.key) || activeTopic === id;
-      section.append(create('summary', topics[id]));
-      for (const lesson of items.filter(item => topic(item) === id)) {
-        const record = state.records[lesson.id] || {};
-        const row = create('div');
-        row.className = 'station';
-        row.dataset.status = record.status || '';
-        if (lesson.id === state.current) row.setAttribute('aria-current','step');
-        const name = create('button', `${lesson.objective} · ${lesson.title}`);
-        name.type = 'button';
-        name.onclick = () => send('open', lesson.id);
-        const mark = create('small', `سطح ${number.format(record.level || 0)} · ${statusLabel[record.status] || 'باقی مانده'}`);
-        mark.className = 'mark';
-        row.append(name, mark);
-        section.append(row);
-      }
-      wrapper.append(section);
-    }
-    return wrapper;
-  });
-  root.replaceChildren(...groups);
-}
-function render(moveFocus) {
-  summaries();
-  renderMap();
-  const current = lessons.find(lesson => lesson.id === state.current);
-  const feedback = state.last_feedback;
-  byId('previous').textContent = state.previous_feedback
-    ? `${state.previous_feedback.title} · ${state.previous_feedback.text}`
-    : 'در درس شل نوشتی «تو ترمینال چاپ می‌شود». درست گفتی. > فقط خروجی عادی را به فایل می‌فرستد و پیام تشخیصی روی ترمینال می‌ماند. صفحهٔ قبلی جمله‌ات را اشتباه رد کرده بود. در تمرین مجوز هم دلیل خواندن فایل را با عضویت سارا در گروه درست توضیح دادی.';
-  byId('last').dataset.kind = state.previous_feedback?.kind || '';
-  byId('lesson-title').textContent = current?.title || 'نوبت مرور و تمرین مستقل';
-  const series = lessons.filter(item => item.series === 'ls');
-  byId('lesson-id').textContent = current?.series === 'ls'
-    ? `ls · قدم ${number.format(series.indexOf(current) + 1)} از ${number.format(series.length)} · هدف ${current.objective}`
-    : current ? `هدف رسمی ${current.objective}` : '';
-  byId('explanation').hidden = !current;
-  byId('practice').hidden = !current;
-  byId('controls').hidden = !current;
-  byId('guide').hidden = !current;
-  byId('feedback').textContent = feedback?.text || (!current ? 'درس‌های مرور را از نقشه باز کن. مرحلهٔ بعد، حل مسئلهٔ تازه بدون راهنماست.' : '');
-  byId('feedback').dataset.kind = feedback?.kind || '';
-  if (current) {
-    byId('explanation').textContent = current.explanation;
-    byId('guide-text').textContent = current.guide;
-    byId('question').textContent = current.question;
-    if (moveFocus) {
-      byId('note').value = state.records[current.id]?.note || '';
-      byId('answer').value = '';
-      byId('lesson-title').focus({preventScroll:true});
-      byId('last').scrollIntoView({block:'nearest'});
-    }
-  }
-}
-async function send(action, lesson = state?.current) {
-  if (busy || !lesson) return;
-  busy = true;
-  byId('status').textContent = '';
-  const answer = action === 'answer' ? byId('answer').value.trim() : '';
-  const note = action === 'open' ? '' : byId('note').value.trim();
-  try {
-    const response = await fetch('/api/course', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({action,lesson,answer,note})
-    });
-    if (!response.ok) throw new Error();
-    state = await response.json();
-    const moved = ['known','skip','open','answer'].includes(action);
-    render(moved);
-  } catch {
-    byId('status').textContent = 'ذخیره انجام نشد. پاسخت را نگه داشتم. اگر درس را در تب دیگری عوض کردی، این صفحه را تازه کن.';
-  } finally {
-    busy = false;
-  }
-}
-byId('practice').onsubmit = event => {
-  event.preventDefault();
-  send('answer');
-};
-document.querySelectorAll('[data-action]').forEach(button => {
-  button.onclick = () => send(button.dataset.action);
-});
-fetch('/api/course', {cache:'no-store'}).then(response => {
-  if (!response.ok) throw new Error();
-  return response.json();
-}).then(data => {
-  lessons = data.lessons;
-  state = data.state;
-  render(true);
-}).catch(() => {
-  byId('lesson-title').textContent = 'ارتباط با مربی برقرار نشد';
-  byId('status').textContent = 'صفحه را دوباره باز کن تا درس ذخیره‌شده را بخوانیم.';
-});
+const $=id=>document.getElementById(id), digits=new Intl.NumberFormat('fa');
+let sections=[], questions=[], state={responses:{},profile:{}}, index=0, busy=false;
+const ratings=[['unknown','هنوز بلد نیستم'],['heard','فقط شنیده‌ام'],['guided','با کمک انجام داده‌ام'],['independent','تنها در تمرین انجام داده‌ام'],['work','در کار واقعی انجام داده‌ام']];
+let theme;try{theme=localStorage.getItem('linux-coach-theme')}catch{}
+function applyTheme(){document.documentElement.dataset.theme=theme|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+$('theme').onclick=()=>{theme=document.documentElement.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('linux-coach-theme',theme)}catch{}applyTheme()};applyTheme();
+function draftKey(id){return 'linux-assessment-draft-'+id}
+function getDraft(id){try{return JSON.parse(localStorage.getItem(draftKey(id))||'null')}catch{return null}}
+function saveDraft(){const q=questions[index];if(!q)return;const rating=document.querySelector('input[name="rating"]:checked')?.value||'unknown';try{localStorage.setItem(draftKey(q.id),JSON.stringify({answer:$('answer').value,rating}))}catch{}}
+function clearDraft(id){try{localStorage.removeItem(draftKey(id))}catch{}}
+function renderSections(){const root=$('sections');root.replaceChildren();for(const section of sections){const items=section.questions, done=items.filter(q=>state.responses[q.id]).length;const button=document.createElement('button');button.type='button';button.className='section';button.setAttribute('aria-current',String(questions[index]?.section===section.id));const title=document.createElement('span');title.textContent=section.title;const count=document.createElement('small');count.textContent=`${digits.format(done)}/${digits.format(items.length)}`;button.append(title,count);button.onclick=()=>navigate(questions.findIndex(q=>q.section===section.id));root.append(button)}}
+function render(){if(!questions.length)return;const answered=Object.keys(state.responses).length;$('count').textContent=`${digits.format(answered)} از ${digits.format(questions.length)}`;$('meter').style.width=(100*answered/questions.length)+'%';renderSections();const q=questions[index],section=sections.find(s=>s.id===q.section),within=section.questions.findIndex(item=>item.id===q.id);$('question-card').hidden=false;$('question-meta').textContent=`پرسش ${digits.format(within+1)} از ${digits.format(section.questions.length)} · کل مصاحبه ${digits.format(index+1)} از ${digits.format(questions.length)}`;$('section-title').textContent=section.title;$('scope').textContent=section.scope;$('prompt').textContent=q.prompt;const record=state.responses[q.id],draft=getDraft(q.id);$('answer').value=draft?.answer??record?.answer??'';$('ratings').replaceChildren(...ratings.map(([value,label])=>{const item=document.createElement('label'),input=document.createElement('input');input.type='radio';input.name='rating';input.value=value;input.checked=value===(draft?.rating??record?.rating??'unknown');item.append(input,document.createTextNode(label));return item}));$('saved').textContent=record?'قبلاً ثبت شده؛ می‌توانی اصلاحش کنی':'';$('prev').disabled=index===0;$('next').disabled=index===questions.length-1;$('status').textContent=''}
+function navigate(next){if(next<0||next>=questions.length)return;saveDraft();index=next;render();$('question-card').scrollIntoView({behavior:'smooth',block:'start'})}
+$('prev').onclick=()=>navigate(index-1);$('next').onclick=()=>navigate(index+1);$('answer').addEventListener('input',saveDraft);$('ratings').addEventListener('change',saveDraft);
+async function post(path,body){let response;try{response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json', 'Accept':'application/json'},body:JSON.stringify(body)})}catch{throw Error('ارتباط با سرور قطع است. در پوشهٔ پروژه `python3 linux-coach/server.py` را اجرا کن و صفحه را از http://127.0.0.1:8765 باز کن.')}if(!response.headers.get('content-type')?.includes('application/json'))throw Error('این صفحه از سرور مربی باز نشده یا سرور نسخهٔ قدیمی است. `python3 linux-coach/server.py` را اجرا کن و http://127.0.0.1:8765 را باز کن.');let data;try{data=await response.json()}catch{throw Error('پاسخ سرور خوانده نشد؛ صفحه را از نو باز کن و دوباره تلاش کن.')}if(!response.ok)throw Error(data.error||'ذخیره انجام نشد');return data}
+$('answer-form').onsubmit=async event=>{event.preventDefault();if(busy)return;const q=questions[index],rating=document.querySelector('input[name="rating"]:checked')?.value||'unknown',answer=$('answer').value;if(!answer.trim()&&rating!=='unknown'){$('status').textContent='توضیحت را بنویس یا «هنوز بلد نیستم» را انتخاب کن.';$('answer').focus();return}busy=true;$('save-answer').disabled=true;try{const data=await post('/api/response',{id:q.id,rating,answer});state=data.state;clearDraft(q.id);render();$('saved').textContent='پاسخ ثبت شد';if(index<questions.length-1){index++;render();$('status').textContent='پاسخ قبلی ذخیره شد. سؤال بعد آماده است.'; $('question-card').scrollIntoView({behavior:'smooth',block:'start'})}else{$('status').textContent='پاسخ ثبت شد. می‌توانی سؤال‌های قبلی را بازبینی کنی.'}}catch(error){$('status').textContent=error.message+'؛ متن تو در این مرورگر نگه داشته شده است.'}finally{busy=false;$('save-answer').disabled=false}};
+const profileFields=['experience','target','preferences'];
+function profileDraft(){return Object.fromEntries(profileFields.map(key=>[key,$(key).value]))}
+for(const key of profileFields)$(key).addEventListener('input',()=>{try{localStorage.setItem('linux-assessment-profile-draft',JSON.stringify(profileDraft()))}catch{}});
+$('save-profile').onclick=async()=>{if(busy)return;busy=true;try{const data=await post('/api/profile',profileDraft());state=data.state;try{localStorage.removeItem('linux-assessment-profile-draft')}catch{}$('profile-state').textContent='معرفی ذخیره شد'}catch(error){$('profile-state').textContent=error.message+' متن معرفی در همین مرورگر نگه داشته شد.'}finally{busy=false}};
+let savedProfile;try{savedProfile=JSON.parse(localStorage.getItem('linux-assessment-profile-draft')||'null')}catch{}
+fetch('/api/assessment',{cache:'no-store',headers:{'Accept':'application/json'}}).then(response=>{if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw Error();return response.json()}).then(data=>{sections=data.sections;questions=sections.flatMap(section=>section.questions);state=data.state;for(const key of profileFields)$(key).value=savedProfile?.[key]??state.profile?.[key]??'';index=Math.max(0,questions.findIndex(q=>!state.responses[q.id]));render()}).catch(()=>{for(const key of profileFields)$(key).value=savedProfile?.[key]??'';$('status').textContent='این صفحه به سرور مربی وصل نیست. در پوشهٔ پروژه `python3 linux-coach/server.py` را اجرا کن و http://127.0.0.1:8765 را باز کن.'});
 </script>
 </body></html>
