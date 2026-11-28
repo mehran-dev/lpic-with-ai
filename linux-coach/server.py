@@ -7,6 +7,7 @@ import json
 import os
 import tempfile
 from assessment import QUESTIONS, public_sections
+from lessons import LESSONS, LESSON_IDS
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "progress.json"
@@ -42,16 +43,25 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        if self.path == "/api/lessons":
+            self.send_json(200, {"lessons": LESSONS, "state": read_data()})
+            return
         if self.path == "/api/assessment":
             self.send_json(200, {"sections": public_sections(), "state": read_data()})
             return
         if self.path == "/api/export":
             self.send_json(200, read_data())
             return
-        if self.path not in {"/", "/index.html"}:
+        if self.path not in {"/", "/index.html", "/assessment.html", "/roadmap.html"}:
             self.send_error(404)
             return
-        body = PAGE.read_bytes()
+        if self.path == "/assessment.html":
+            page = ROOT / "pages" / "assessment.html"
+        elif self.path == "/roadmap.html":
+            page = ROOT / "pages" / "roadmap.html"
+        else:
+            page = PAGE
+        body = page.read_bytes()
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
@@ -60,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self):
-        if self.path not in {"/api/response", "/api/profile"}:
+        if self.path not in {"/api/response", "/api/profile", "/api/mentor", "/api/lesson"}:
             self.send_error(404)
             return
         try:
@@ -73,7 +83,24 @@ class Handler(BaseHTTPRequestHandler):
             with LOCK:
                 data = read_data()
                 now = datetime.now(timezone.utc).isoformat()
-                if self.path == "/api/response":
+                if self.path == "/api/lesson":
+                    lesson_id = payload.get("id")
+                    answer = payload.get("answer")
+                    if not isinstance(lesson_id, str) or lesson_id not in LESSON_IDS or not isinstance(answer, str) or len(answer) > 12000:
+                        raise ValueError("درس یا پاسخ نامعتبر است")
+                    entry = {"at": now, "id": lesson_id, "answer": answer.strip(), "review": "pending" if answer.strip() else "not_requested"}
+                    course = data.setdefault("lessons", {"records": {}, "events": []})
+                    course["records"][lesson_id] = entry
+                    course["events"].append(entry)
+                elif self.path == "/api/mentor":
+                    answer = payload.get("answer")
+                    if payload.get("mission") != "mount-basics-1" or not isinstance(answer, str) or not 1 <= len(answer.strip()) <= 12000:
+                        raise ValueError("پاسخ تمرین نامعتبر است")
+                    entry = {"at": now, "mission": "mount-basics-1", "answer": answer.strip(), "review": "pending"}
+                    mentor = data.setdefault("mentor", {"attempts": [], "latest": {}})
+                    mentor["attempts"].append(entry)
+                    mentor["latest"]["mount-basics-1"] = entry
+                elif self.path == "/api/response":
                     question_id = payload.get("id")
                     rating = payload.get("rating")
                     answer = payload.get("answer")

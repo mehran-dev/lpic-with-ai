@@ -961,5 +961,221 @@
     "target": "بیشتر هدفم غقده گشایی در بلد نبودن لینوکسه و می خوام به عنوان یک سنیور دوآپس کار لینوکس و شبکه رو بلد باشم",
     "preferences": "چیزایی که حس بلد بودن بهم میده - چالش هایی که دوآپس کارای واقعی و سیس ادمین ها با تجربه فقط بلدن حل کنن ۰- حس استاد شدن در لینوکس و شبکه -",
     "at": "2026-11-28T08:43:16.647942+00:00"
+  },
+  "mentor": {
+    "attempts": [
+      {
+        "at": "2026-11-28T11:03:25.339043+00:00",
+        "mission": "mount-basics-1",
+        "answer": "نه دیگه تو فهمیدی چی رو باد نیستم همه رو با مثال زیبا مختصر و مفید و عمیق توضیح بده ---",
+        "review": "pending"
+      }
+    ],
+    "latest": {
+      "mount-basics-1": {
+        "at": "2026-11-28T11:03:25.339043+00:00",
+        "mission": "mount-basics-1",
+        "answer": "نه دیگه تو فهمیدی چی رو باد نیستم همه رو با مثال زیبا مختصر و مفید و عمیق توضیح بده ---",
+        "review": "pending"
+      }
+    }
+  },
+  "lessons": {
+    "records": {
+      "storage": {
+        "at": "2026-11-28T11:42:11.567133+00:00",
+        "id": "storage",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "permissions": {
+        "at": "2026-11-28T11:43:17.657674+00:00",
+        "id": "permissions",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "shell": {
+        "at": "2026-11-28T11:46:14.360993+00:00",
+        "id": "shell",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "boot": {
+        "at": "2026-11-28T11:47:14.856050+00:00",
+        "id": "boot",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "packages": {
+        "at": "2026-11-28T12:01:41.079966+00:00",
+        "id": "packages",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "network": {
+        "at": "2026-11-28T12:05:17.225293+00:00",
+        "id": "network",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "web": {
+        "at": "2026-11-28T12:06:46.731952+00:00",
+        "id": "web",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "security": {
+        "at": "2026-11-28T12:07:57.736843+00:00",
+        "id": "security",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "automation": {
+        "at": "2026-11-28T12:08:59.072006+00:00",
+        "id": "automation",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "git_ci": {
+        "at": "2026-11-28T12:09:22.215433+00:00",
+        "id": "git_ci",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "docker": {
+        "at": "2026-11-28T12:09:32.501654+00:00",
+        "id": "docker",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "kubernetes": {
+        "at": "2026-11-28T12:09:47.470204+00:00",
+        "id": "kubernetes",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "infra": {
+        "at": "2026-11-28T12:10:22.994863+00:00",
+        "id": "infra",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "observability": {
+        "at": "2026-11-28T12:10:56.756842+00:00",
+        "id": "observability",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "backup": {
+        "at": "2026-11-28T12:12:44.435543+00:00",
+        "id": "backup",
+        "answer": "",
+        "review": "not_requested"
+      },
+      "services": {
+        "at": "2026-11-28T12:13:41.722052+00:00",
+        "id": "services",
+        "answer": "",
+        "review": "not_requested"
+      }
+    },
+    "events": [
+      {
+        "at": "2026-11-28T11:42:11.567133+00:00",
+        "id": "storage",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T11:43:17.657674+00:00",
+        "id": "permissions",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T11:46:14.360993+00:00",
+        "id": "shell",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T11:47:14.856050+00:00",
+        "id": "boot",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:01:41.079966+00:00",
+        "id": "packages",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:05:17.225293+00:00",
+        "id": "network",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:06:46.731952+00:00",
+        "id": "web",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:07:57.736843+00:00",
+        "id": "security",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:08:59.072006+00:00",
+        "id": "automation",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:09:22.215433+00:00",
+        "id": "git_ci",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:09:32.501654+00:00",
+        "id": "docker",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:09:47.470204+00:00",
+        "id": "kubernetes",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:10:22.994863+00:00",
+        "id": "infra",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:10:56.756842+00:00",
+        "id": "observability",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:12:44.435543+00:00",
+        "id": "backup",
+        "answer": "",
+        "review": "not_requested"
+      },
+      {
+        "at": "2026-11-28T12:13:41.722052+00:00",
+        "id": "services",
+        "answer": "",
+        "review": "not_requested"
+      }
+    ]
   }
 }
